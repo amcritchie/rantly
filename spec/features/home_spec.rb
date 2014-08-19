@@ -10,3 +10,15 @@ describe "Visiting the home page" do
     expect(page).to have_content("Rantly has allowed")
   end
 end
+
+describe "Registering with Rantly. =>" do
+  it "clicking the join button." do
+    visit root_path
+
+    click_link "Join"
+
+    save_and_open_page
+
+    expect(page).to have_content("Username")
+  end
+end
