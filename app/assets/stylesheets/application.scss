@@ -8,6 +8,116 @@
 @import "pages/homepage.scss";
 
 body {
-  background-color: $color-base;
-  color: $color-text;
+  background-color: #666;
+//  color: $color-text;
+}
+
+nav{
+  width: 100%;
+  height: 80px;
+  display: inline-block;
+}
+.title{
+  position: relative;
+  display: inline-block;
+  border-right: solid darkgreen 1px;
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 20px;
+  vertical-align: center;
+}
+.userOptions{
+  position: relative;
+  display: inline-block;
+  float: right;
+  height: 100%;
+  vertical-align: center;
+  margin-top: 20px;
+}
+.joinButton{
+  display: inline-block;
+  background-color: green;
+  border: solid gray 1px;
+  padding: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  color: white;
+  font-size: 140%;
+  -webkit-border-radius: 6px;
+  margin-top: -10px;
+  margin-right: 60px;
+}
+.loginLink{
+  color: white;
+  font-size: 140%;
+  margin-right: 30px;
+}
+
+.newUser{
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: whitesmoke;
+  width: 480px;
+  padding-bottom: 5%;
+  ul {
+    padding-left: 0;
+  }
+  .userInfoTitle{
+    display: block;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    padding-top: 0;
+  }
+  label{
+    display: block;
+    color: black;
+  }
+  li{
+    display: inline-block;
+    float: left;
+    padding: 3%;
+    padding-top: 0;
+    width: 44%;
+  }
+  input{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  .userInfoBio{
+    position: relative;
+    display: inline-block;
+    width: 94%;
+    textarea{
+      height: 150px;
+      width: 98%;
+    }
+  }
+  .submitButton{
+    position: relative;
+    display: inline-block;
+    width: 94%;
+    input{
+      background-color: green;
+      height: 50px;
+    }
+  }
+  .userInfoRadio{
+    width: 100%;
+    .radio{
+      position: relative;
+      display: inline-block;
+      float: left;
+      margin-left: 8%;
+      width: 21%;
+      input{
+        width: 20px;
+      }
+      label{
+        display: inline-block;
+      }
+    }
+  }
 }

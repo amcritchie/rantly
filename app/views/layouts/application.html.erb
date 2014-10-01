@@ -2,22 +2,21 @@
 <html>
 <head>
   <title>Rantly</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <nav>
-  <div class="brand">
-    <h1>Rantly</h1>
+  <div class="title">
+    <h1>Rant.ly</h1>
+  </div>
+  <div class="userOptions">
+    <%= link_to "Login", '/', :class => "loginLink" %>
+    <%= link_to "JOIN", new_user_path, :class => "joinButton" %>
   </div>
 
-  <div class="tools">
-    <a href="/">Login</a>
-    <%= link_to "Join", new_user_path %>
-    <!--<a href="/" class="call-to-action">Join</a>-->
-  </div>
 </nav>
 
 <main>
