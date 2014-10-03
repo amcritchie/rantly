@@ -1,0 +1,25 @@
+<%= form_for @user, url: signin_path, html: {class: 'userForm'} do |f| %>
+    <% if @user.errors.any? %>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+        </ul>
+    <% end %>
+
+    <h1 class="userInfoTitle">Login</h1>
+    <ul>
+      <li class="full">
+        <%=  f.label :username %>
+        <%=  f.text_field :username %>
+      </li>
+      <li class="full">
+        <%=  f.label :password %>
+        <%=  f.password_field :password %>
+      </li>
+      <hr>
+      <li class="submitButton" >
+        <%= f.submit 'LOGIN'%>
+      </li>
+    </ul>
+<% end %>

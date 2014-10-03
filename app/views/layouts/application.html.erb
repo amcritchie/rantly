@@ -13,8 +13,12 @@
     <h1>Rant.ly</h1>
   </div>
   <div class="userOptions">
-    <%= link_to "Login", '/', :class => "loginLink" %>
-    <%= link_to "JOIN", new_user_path, :class => "joinButton" %>
+    <% if session[:user_id] = nil %>
+        <%= link_to "Login", new_session_path, :class => "loginLink" %>
+        <%= link_to "JOIN", new_user_path, :class => "joinButton" %>
+    <% else %>
+        <%= button_to "Sign Out", signout_path, method: :delete %>
+    <% end %>
   </div>
 
 </nav>

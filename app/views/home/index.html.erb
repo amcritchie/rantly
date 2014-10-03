@@ -1,7 +1,11 @@
-<header class="hero">
+<header class="homePageHead">
   <h1>Rantly</h1>
-  <h2>Let it all out</h2>
+  <h3>Let it all out</h3>
+
 </header>
+<% if flash[:success] %>
+<div class="flashSuccess"><%= flash[:success] %></div>
+<% end %>
 
 <section class="quote">
 
