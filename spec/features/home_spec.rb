@@ -2,13 +2,9 @@ require "rails_helper"
 
 describe "Visiting the home page" do
   it "shows the homepage" do
-    # visit root_path
-
-    save_and_open_page
-    visit "/"
-    save_and_open_page
+    visit root_path
     expect(page).to have_content("Rantly")
-    # expect(page).to have_content("Let it all out")
+    expect(page).to have_content("Let it all out")
     expect(page).to have_content("Jeff Taggart")
     expect(page).to have_content("Rantly has allowed")
   end
@@ -39,7 +35,7 @@ describe "Registering with Rantly. =>" do
 
     click_button "Register"
     expect(page).to have_content("Rant.ly")
-    # expect(page).to have_content("Let it all out")
+    expect(page).to have_content("Let it all out")
     expect(page).to have_content("Thank you for registering!")
   end
 end

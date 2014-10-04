@@ -1,0 +1,27 @@
+<% if flash[:success] %>
+    <div class="flashSuccess"><%= flash[:success] %></div>
+<% end %>
+
+<article class="profilePanel">
+  <%= image_tag("https://avatars2.githubusercontent.com/u/7839245?v=2&s=460", class: "profilePicture") %>
+  <%= session[:user_id] %>
+  <%= current_user.first_name + " " + current_user.last_name %>
+  <hr>
+
+  <%= form_for :rant, url: new_rant_path, html: {class: 'rantForm'} do |f| %>
+
+  <ul>
+    <li class="full">
+      <%= f.label :title, "A rant about" %>
+      <%= f.text_field :title %>
+    </li>
+
+    <li class="userInfoBio">
+      <%= f.label :rant %>
+      <%= f.text_area :rant %>
+    </li>
+  </ul>
+
+  <% end %>
+</article>
+<article class="rantPanel"></article>

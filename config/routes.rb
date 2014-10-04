@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/" => "home#index"
   resources :users
   resource :session, only: [:new, :create, :destroy]
+  resources :rants
 
   get "signin" => "sessions#new", as: :signin
   post "signin" => "sessions#create"

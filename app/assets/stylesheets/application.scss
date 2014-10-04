@@ -17,40 +17,45 @@ nav{
   height: 80px;
   display: inline-block;
 }
-.title{
-  position: relative;
+
+.navBar{
   display: inline-block;
-  border-right: solid darkgreen 1px;
-  height: 100%;
-  padding-left: 10px;
-  padding-right: 20px;
-  vertical-align: center;
-}
-.userOptions{
   position: relative;
-  display: inline-block;
-  float: right;
   height: 100%;
   vertical-align: center;
-  margin-top: 20px;
-}
-.joinButton{
-  display: inline-block;
-  background-color: green;
-  border: solid gray 1px;
-  padding: 15px;
-  padding-left: 40px;
-  padding-right: 40px;
-  color: white;
-  font-size: 140%;
-  -webkit-border-radius: 6px;
-  margin-top: -10px;
-  margin-right: 60px;
-}
-.loginLink{
-  color: white;
-  font-size: 140%;
-  margin-right: 30px;
+
+  .title{
+    float: left;
+    border-right: solid darkgreen 1px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .userOptions{
+    float: left;
+    margin-left: 150px;
+    margin-top: 20px;
+  }
+  .loginLogout{
+    float: right;
+    margin-top: 20px;
+  }
+  .joinButton{
+    background-color: green;
+    border: solid gray 1px;
+    padding: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: white;
+    font-size: 140%;
+    -webkit-border-radius: 6px;
+    margin-top: -10px;
+    margin-right: 60px;
+  }
+  .loginLink{
+    color: white;
+    font-size: 140%;
+    margin-right: 30px;
+  }
 }
 
 .userForm{
@@ -138,11 +143,72 @@ nav{
 
 }
 .flashSuccess{
-//  float: bottom;
   text-align: center;
   background-color: green;
   color: whitesmoke;
   padding: 3%;
   font-size: 20px;
+
+}
+
+article{
+  position: relative;
+  display: block;
+  float: left;
+  margin-left: 20px;
+}
+
+.profilePanel{
+  width: 336px;
+  height: 670px;
+  background-color: green;
+  text-align: center;
+  .profilePicture{
+    text-align: center;
+    margin-top: 50px;
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .rantForm{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 100%;
+//    padding-bottom: 5%;
+    ul {
+      padding-left: 0;
+    }
+    input{
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    .full{
+      input{
+        width: 90%
+      }
+    }
+    .userInfoBio{
+      display: inline-block;
+      width: 100%;
+      textarea{
+        height: 150px;
+        width: 88%;
+
+      }
+    }
+  }
+}
+
+.rantPanel{
+  width: 1310px;
+  height: 70px;
+  background-color: deepskyblue;
 
 }
