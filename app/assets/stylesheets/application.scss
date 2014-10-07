@@ -1,45 +1,42 @@
 //= require normalize-rails
 //= require_self
-
 @import "colors";
 @import "util";
 @import "nav";
-
 @import "pages/homepage.scss";
 
 body {
   background-color: #666;
-//  color: $color-text;
 }
 
-nav{
+nav {
   width: 100%;
   height: 80px;
   display: inline-block;
 }
 
-.navBar{
+.navBar {
   display: inline-block;
   position: relative;
   height: 100%;
   vertical-align: center;
 
-  .title{
+  .title {
     float: left;
     border-right: solid darkgreen 1px;
     padding-left: 50px;
     padding-right: 50px;
   }
-  .userOptions{
+  .userOptions {
     float: left;
     margin-left: 150px;
-    margin-top: 20px;
+    margin-top: 30px;
   }
-  .loginLogout{
+  .loginLogout {
     float: right;
-    margin-top: 20px;
+    margin-top: 30px;
   }
-  .joinButton{
+  .joinButton {
     background-color: green;
     border: solid gray 1px;
     padding: 15px;
@@ -51,14 +48,13 @@ nav{
     margin-top: -10px;
     margin-right: 60px;
   }
-  .loginLink{
+  .loginLink {
     color: white;
     font-size: 140%;
     margin-right: 30px;
   }
 }
-
-.userForm{
+.userForm {
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -68,81 +64,79 @@ nav{
   ul {
     padding-left: 0;
   }
-  .userInfoTitle{
+  .userInfoTitle {
     display: block;
     margin-left: 3%;
     margin-bottom: 3%;
     padding-top: 3%;
   }
-  label{
+  label {
     display: block;
     color: black;
   }
-  li{
+  li {
     display: inline-block;
     float: left;
     padding: 3%;
     padding-top: 0;
   }
-  .half{
+  .half {
     width: 44%;
   }
-  .full{
+  .full {
     width: 94%;
   }
-  input{
+  input {
     width: 100%;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
   }
-  .userInfoBio{
+  .userInfoBio {
     position: relative;
     display: inline-block;
     width: 94%;
-    textarea{
+    textarea {
       height: 150px;
       width: 98%;
     }
   }
-  .submitButton{
+  .submitButton {
     position: relative;
     display: inline-block;
     width: 94%;
-    input{
+    input {
       color: whitesmoke;
       background-color: green;
       height: 50px;
     }
   }
-  .userInfoRadio{
+  .userInfoRadio {
     width: 100%;
-    .radio{
+    .radio {
       position: relative;
       display: inline-block;
       float: left;
       margin-left: 8%;
       width: 21%;
-      input{
+      input {
         width: 20px;
       }
-      label{
+      label {
         display: inline-block;
       }
     }
   }
 }
-
-.homePageHead{
+.homePageHead {
   background-color: whitesmoke;
   text-align: center;
   padding: 1%;
-  h1{
+  h1 {
     font-size: 80px;
   }
-
 }
-.flashSuccess{
+.flashSuccess {
   text-align: center;
   background-color: green;
   color: whitesmoke;
@@ -150,20 +144,18 @@ nav{
   font-size: 20px;
 
 }
-
-article{
+article {
   position: relative;
   display: block;
   float: left;
   margin-left: 20px;
 }
 
-.profilePanel{
-  width: 336px;
+
+.profilePanel {
+  width: 340px;
   height: 670px;
-  background-color: green;
-  text-align: center;
-  .profilePicture{
+  .profilePicture {
     text-align: center;
     margin-top: 50px;
     height: 200px;
@@ -172,43 +164,73 @@ article{
     margin-left: auto;
     margin-right: auto;
   }
+  .profileName{
+    color: lightgrey;
+    text-align: center;
 
-  .rantForm{
+  }
+  .rantForm {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 20px;
+    margin-right: 20px;
     position: relative;
-    width: 100%;
-//    padding-bottom: 5%;
+    width: 300px;
+    color: lightgray;
+    label{
+      text-align: left;
+    }
     ul {
       padding-left: 0;
+      list-style-type: none;
     }
-    input{
+    li{
+      margin-top: 20px;
+    }
+    input {
       width: 100%;
       box-sizing: border-box;
       padding: 0;
       margin: 0;
     }
-    .full{
-      input{
-        width: 90%
+    .full {
+      input {
+        width: 100%
       }
     }
-    .userInfoBio{
+    .userInfoBio {
       display: inline-block;
       width: 100%;
-      textarea{
-        height: 150px;
-        width: 88%;
-
+      textarea {
+        height: 250px;
+        width: 98%;
+      }
+    }
+    .submitButton {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      input {
+        color: whitesmoke;
+        background-color: green;
+        height: 50px;
       }
     }
   }
 }
 
-.rantPanel{
+.rantPanel {
   width: 1310px;
   height: 70px;
   background-color: deepskyblue;
 
+}
+
+blockquote {
+  height: 100px;
+  img {
+    float: left;
+    height: 100%;
+    width: 100px;
+    margin-right: 20px;
+  }
 }
