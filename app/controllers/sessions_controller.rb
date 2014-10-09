@@ -9,11 +9,10 @@ class SessionsController < ApplicationController
     # @user = User.find_by(username: params[:user])
     # binding.pry
     @user = User.find_by(username: params[:user][:username])
-
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       flash[:success] = "Welcome back #{current_user.first_name}"
-      redirect_to rants_path
+      redirect_to root_path
     else
       @user = User.new()
       # @user.errors[:base] << "Username / password is invalid"

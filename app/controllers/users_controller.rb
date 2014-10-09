@@ -13,7 +13,8 @@ class UsersController < ApplicationController
         first_name: params[:user][:first_name],
         last_name: params[:user][:last_name],
         bio: params[:user][:bio],
-        rant_frequency: params[:user][:rant_frequency]
+        rant_frequency: params[:user][:rant_frequency],
+        image_url: "http://www.egotailor.com/product/10472/images/10472design-1.jpg"
     )
 
     if @user.save
@@ -25,6 +26,24 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
+    @user = User.find(params[:id])
+  end
+
+  def update
+    if current_user.id == params[:id].to_i
+      user = User.find(params[:id])
+      user.update(
+          username: params[:user][:username],
+          first_name: params[:user][:first_name],
+          last_name: params[:user][:last_name],
+          bio: params[:user][:bio],
+          rant_frequency: params[:user][:rant_frequency],
+          image_url: params[:user][:image_url]
+      )
+      redirect_to root_path
+      # , notice: "Information updated successfully"
+    else
+      redirect_to :back
+    end
   end
 end

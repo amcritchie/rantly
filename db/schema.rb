@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141006222436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "rants_table", force: true do |t|
+  create_table "rants", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
     t.text     "rant"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20141006222436) do
     t.string   "last_name"
     t.string   "bio"
     t.string   "rant_frequency"
-    t.string   "image_url"
+    t.text     "image_url"
   end
 
 end

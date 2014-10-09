@@ -9,15 +9,13 @@
 <body>
 
 <nav class="navBar">
+
   <div class="title">
     <h1>
-      <% if session[:user_id] == nil %>
           <%= link_to "Rant.ly", root_path, :class => "loginLink" %>
-      <% else %>
-          <%= link_to "Rant.ly", rants_path, :class => "loginLink" %>
-      <% end %>
     </h1>
   </div>
+
   <div class="userOptions">
     <% if session[:user_id] == nil %>
     <% else %>
