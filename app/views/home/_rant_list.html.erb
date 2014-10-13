@@ -19,12 +19,12 @@
             </div>
             <div class="name">
               <% if rant.user_id != current_user.id %>
-                  <% if Following.where(user_following_id: current_user.id, user_being_followed_id: rant.user.id) != [] ? true : false %>
-                      <%= link_to "Unfollow", user_following_path(user_id: rant.user, id: current_user.id), method: :delete %>
-                  <% else %>
-                      <%= link_to "Follow", user_followings_path(rant.user), method: :post %>
-                  <% end %>
+              <% if Following.where(user_following_id: current_user.id, user_being_followed_id: rant.user.id) != [] ? true : false %>
+                  <%= link_to "Unfollow", user_following_path(user_id: rant.user, id: current_user.id), method: :delete %>
+              <% else %>
+                  <%= link_to "Follow", user_followings_path(rant.user), method: :post %>
               <% end %>
+                  <% end %>
             </div>
           </article>
           <article class="rantBody">

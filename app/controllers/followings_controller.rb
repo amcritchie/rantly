@@ -1,7 +1,9 @@
 class FollowingsController < ApplicationController
 
-  def new
-    @following = Following.new
+
+  def index
+    @rant = Rant.new
+    @followings = Following.where(user_following_id: 15)
   end
 
   def create
@@ -18,6 +20,6 @@ class FollowingsController < ApplicationController
   def destroy
     follower = Following.where(user_following_id: current_user.id, user_being_followed_id: params[:user_id])
     follower.delete_all
-    redirect_to root_path
+    redirect_to :back
   end
 end

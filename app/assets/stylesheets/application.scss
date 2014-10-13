@@ -228,6 +228,28 @@ nav {
   }
 }
 
+.followingPanel {
+  width: 1120px;
+  display: inline-block;
+  background-color: whitesmoke;
+  margin-left: 2.2%;
+  h1{
+    text-align: center;
+  }
+  article{
+    display: inline-block;
+    width: 33%;
+    height: 300px;
+    text-align: center;
+    img{
+      width: 200px;
+      height: 200px;
+    }
+    h4, p{
+      margin: 10px 0 2px 0;
+    }
+  }
+}
 .rantPanel {
   width: 1120px;
   display: inline-block;

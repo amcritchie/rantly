@@ -1,0 +1,45 @@
+<% if flash[:success] %>
+    <div class="flashSuccess"><%= flash[:success] %></div>
+<% end %>
+<% if flash[:fail] %>
+    <div class="flashFail"><%= flash[:fail] %></div>
+<% end %>
+
+<article class="profilePanel">
+  <%= link_to image_tag(current_user.image_url, class: "profilePicture"), edit_user_path(current_user) %>
+  <h2 class="profileName">
+    <%= current_user.full_name %>
+  </h2>
+  <hr>
+  <%= form_for @rant, html: {class: 'rantForm'} do |f| %>
+      <ul>
+        <li class="full">
+          <%= f.label :title, "A rant about:" %>
+          <%= f.text_field :title %>
+        </li>
+
+        <li class="userInfoBio">
+          <%= f.label :rant, "Rant:" %>
+          <%= f.text_area :rant %>
+        </li>
+        <li class="submitButton">
+          <%= f.submit "RANT" %>
+        </li>
+      </ul>
+  <% end %>
+</article>
+
+<article class="followingPanel">
+  <h1>Following</h1>
+  <hr>
+  <% @followings.each do |following| %>
+      <article>
+        <div>
+          <h4><%= User.find(following.user_being_followed_id).full_name %></h4>
+          <%= image_tag User.find(following.user_being_followed_id).image_url %>
+
+          <p><%= link_to "Unfollow", user_following_path(user_id: User.find(following.user_being_followed_id).id, id: current_user.id), method: :delete %></p>
+        </div>
+      </article>
+  <% end %>
+</article>
