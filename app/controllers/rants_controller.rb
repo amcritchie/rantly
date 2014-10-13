@@ -9,12 +9,16 @@ class RantsController < ApplicationController
   end
 
   def create
-    Rant.create(
+    @rant = Rant.new(
         user_id: current_user.id,
         title: params[:rant][:title],
         rant: params[:rant][:rant]
     )
-    flash[:success] = "Rant Created"
+    if @rant.save
+      flash[:success] = "Rant Created"
+    else
+      flash[:fail] = "Rant must be at least 140 characters"
+    end
     redirect_to root_path
   end
 end
