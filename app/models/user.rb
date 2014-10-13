@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :rants
 
   validates :username, presence: true
+  validates :username, uniqueness: true
   validates :password_digest, presence: true
   validates :password_digest, length: {minimum: 8}
   validates :first_name, presence: true

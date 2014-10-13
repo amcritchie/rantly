@@ -8,12 +8,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(
-        username: params[:user][:username],
-        password: params[:user][:password],
-        first_name: params[:user][:first_name],
-        last_name: params[:user][:last_name],
-        bio: params[:user][:bio],
-        rant_frequency: params[:user][:rant_frequency],
+        user_params,
         image_url: "http://www.egotailor.com/product/10472/images/10472design-1.jpg"
     )
 
@@ -45,5 +40,9 @@ class UsersController < ApplicationController
     else
       redirect_to :back
     end
+  end
+
+  def user_params
+    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency)
   end
 end

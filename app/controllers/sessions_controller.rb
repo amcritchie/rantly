@@ -6,8 +6,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # @user = User.find_by(username: params[:user])
-    # binding.pry
     @user = User.find_by(username: params[:user][:username])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
@@ -15,8 +13,6 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       @user = User.new()
-      # @user.errors[:base] << "Username / password is invalid"
-      # flash[:error] = "Thank you for registering!"
       render :new
     end
   end
