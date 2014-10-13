@@ -18,7 +18,13 @@
               <%= image_tag(rant.user.image_url) %>
             </div>
             <div class="name">
-              <%= link_to "Follow", root_path if rant.user_id != current_user.id%>
+              <% if rant.user_id != current_user.id %>
+                  <% if Following.where(user_following_id: current_user.id, user_being_followed_id: rant.user.id) != [] ? true : false %>
+                      <%= link_to "Unfollow", user_following_path(user_id: rant.user, id: current_user.id), method: :delete %>
+                  <% else %>
+                      <%= link_to "Follow", user_followings_path(rant.user), method: :post %>
+                  <% end %>
+              <% end %>
             </div>
           </article>
           <article class="rantBody">
@@ -28,7 +34,11 @@
           </article>
           <article class="bottom">
             <div>
-              <%= link_to "Delete", rant_path(rant), method: :delete if rant.user_id == current_user.id %>
+              <% if rant.user_id == current_user.id %>
+                  <%= link_to "Delete", rant_path(rant), method: :delete %>
+              <% else %>
+                  <%= link_to "#{index + rand(7)}-Favorite", root_path %>
+              <% end %>
             </div>
           </article>
         </div>
