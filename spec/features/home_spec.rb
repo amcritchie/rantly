@@ -195,4 +195,10 @@ describe "My Rants on the dashboard. =>" do
     create_rant("Title4", filler_text4)
     expect(page).to_not have_content(filler_text1)
   end
+  it "Rant can be deleted" do
+    create_rant("Title1", filler_text1)
+    expect(page).to have_content(filler_text1)
+    click_link "Delete"
+    expect(page).to_not have_content(filler_text1)
+  end
 end

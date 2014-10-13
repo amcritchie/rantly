@@ -21,4 +21,11 @@ class RantsController < ApplicationController
     end
     redirect_to root_path
   end
+
+  def destroy
+    rant = Rant.find(params[:id])
+    rant.destroy
+    flash[:success] = "Rant deleted"
+    redirect_to root_path
+  end
 end

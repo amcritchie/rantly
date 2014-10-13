@@ -45,6 +45,9 @@
             <article class="rantBody">
               <p><%= rant.rant %></p>
             </article>
+          <div class="delete">
+            <%= link_to("Delete", rant_path(rant), method: :delete) if rant.user_id == current_user.id %>
+          </div>
         </li>
 
     <% end %>
