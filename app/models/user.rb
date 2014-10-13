@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :bio, presence: true
   validates :rant_frequency, presence: true
+
+  def full_name
+    first_name.capitalize + " " + last_name.capitalize
+  end
 end
