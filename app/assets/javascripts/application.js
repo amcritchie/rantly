@@ -19,6 +19,7 @@ $(document).ready(function(){
 
     setTimeout(function(){
         $(".flashFail").fadeOut('slow');
+        $(".flashSuccess").fadeOut('slow');
     }, 1000)
 
 });

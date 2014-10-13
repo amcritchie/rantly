@@ -28,46 +28,10 @@
       </ul>
   <% end %>
 </article>
-<article class="rantPanel">
-  <h1>My Rants</h1>
-  <hr width="90%">
-  <ul>
-    <% @my_rants.each_with_index do |rant, index| %>
-        <li>
-        <% if index!=0 %>
-            <hr width="50%">
-        <% end %>
-            <article class="ranter">
-              <h3><%= current_user.first_name.capitalize %></h3>
-              <%= image_tag(current_user.image_url) %>
-              <%= link_to "Follow", root_path %>
-            </article>
-            <article class="rantBody">
-              <p><%= rant.rant %></p>
-            </article>
-          <div class="delete">
-            <%= link_to("Delete", rant_path(rant), method: :delete) if rant.user_id == current_user.id %>
-          </div>
-        </li>
 
-    <% end %>
-  </ul>
-  <h1>Latest Rants</h1>
-  <ul>
-    <% @latest_rants.each_with_index do |rant, index| %>
-        <li>
-          <% if index!=0 %>
-              <hr width="50%">
-          <% end %>
-          <article class="ranter">
-            <h3><%= rant.user.first_name.capitalize %></h3>
-            <%= image_tag(rant.user.image_url) %>
-            <%= link_to "Follow", root_path %>
-          </article>
-          <article class="rantBody">
-            <p><%= rant.rant %></p>
-          </article>
-        </li>
-    <% end %>
-  </ul>
+<article class="rantPanel">
+
+  <%= render partial: 'rant_list', locals:{title:"My Rants", rant_list:@my_rants} %>
+  <%= render partial: 'rant_list', locals:{title:"Last Rants", rant_list:@latest_rants} %>
+
 </article>
