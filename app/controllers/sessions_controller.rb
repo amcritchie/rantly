@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:user][:username])
-    if @user && @user.authenticate(params[:user][:password])
+    @user = User.find_by(username: params[:user][:username].downcase)
+    if @user && @user.authenticate(params[:user][:password].downcase)
       session[:user_id] = @user.id
-      flash[:success] = "Welcome back #{current_user.first_name}"
+      flash[:success] = "Welcome back #{current_user.first_name.capitalize}"
       redirect_to root_path
     else
       @user = User.new()

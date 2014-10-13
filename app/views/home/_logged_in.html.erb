@@ -8,10 +8,9 @@
 <article class="profilePanel">
   <%= link_to image_tag(current_user.image_url, class: "profilePicture"), edit_user_path(current_user) %>
   <h2 class="profileName">
-    <%= current_user.first_name + " " + current_user.last_name %>
+    <%= current_user.first_name.capitalize + " " + current_user.last_name.capitalize %>
   </h2>
   <hr>
-
   <%= form_for @rant, html: {class: 'rantForm'} do |f| %>
       <ul>
         <li class="full">
@@ -23,7 +22,6 @@
           <%= f.label :rant, "Rant:" %>
           <%= f.text_area :rant %>
         </li>
-
         <li class="submitButton">
           <%= f.submit "RANT" %>
         </li>
@@ -40,7 +38,7 @@
             <hr width="50%">
         <% end %>
             <article class="ranter">
-              <h3><%= current_user.first_name %></h3>
+              <h3><%= current_user.first_name.capitalize %></h3>
               <%= image_tag(current_user.image_url) %>
               <%= link_to "Follow", root_path %>
             </article>
@@ -59,7 +57,7 @@
               <hr width="50%">
           <% end %>
           <article class="ranter">
-            <h3><%= rant.user.first_name %></h3>
+            <h3><%= rant.user.first_name.capitalize %></h3>
             <%= image_tag(rant.user.image_url) %>
             <%= link_to "Follow", root_path %>
           </article>
