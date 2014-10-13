@@ -9,14 +9,13 @@
 <body>
 
 <nav class="navBar">
-
-  <div class="title">
+  <article class="title">
     <h1>
           <%= link_to "Rant.ly", root_path, :class => "loginLink" %>
     </h1>
-  </div>
+  </article>
 
-  <div class="userOptions">
+  <article class="userOptions">
     <% if session[:user_id] == nil %>
     <% else %>
         <%= link_to "Dashboard", root_path, :class => "loginLink" %>
@@ -24,16 +23,16 @@
         <%= link_to "Favorites", rants_path, :class => "loginLink" %>
         <%= link_to "Search", root_path, :class => "loginLink" %>
     <% end %>
-  </div>
+  </article>
 
-  <div class="loginLogout">
+  <article class="loginLogout">
     <% if session[:user_id] == nil %>
         <%= link_to "Login", new_session_path, :class => "loginLink" %>
         <%= link_to "JOIN", new_user_path, :class => "joinButton" %>
     <% else %>
         <%= link_to "Logout", signout_path, method: :delete, :class => 'joinButton' %>
     <% end %>
-  </div>
+  </article>
 
 </nav>
 
