@@ -1,0 +1,61 @@
+<% if flash[:success] %>
+    <div class="flashSuccess"><%= flash[:success] %></div>
+<% end %>
+<% if flash[:fail] %>
+    <div class="flashFail"><%= flash[:fail] %></div>
+<% end %>
+
+<article class="profilePanel">
+  <%= link_to image_tag(current_user.image_url, class: "profilePicture"), edit_user_path(current_user) %>
+  <h2 class="profileName">
+    <%= current_user.full_name %>
+  </h2>
+  <hr>
+  <%= form_for @rant, html: {class: 'rantForm'} do |f| %>
+      <ul>
+        <li class="full">
+          <%= f.label :title, "A rant about:" %>
+          <%= f.text_field :title %>
+        </li>
+
+        <li class="userInfoBio">
+          <%= f.label :rant, "Rant:" %>
+          <%= f.text_area :rant %>
+        </li>
+        <li class="submitButton">
+          <%= f.submit "RANT" %>
+        </li>
+      </ul>
+  <% end %>
+</article>
+
+<article class="userPanel">
+  <div>
+  <h1><%= @user.full_name %></h1>
+  <% if @user.id != current_user.id %>
+      <% if Following.where(user_following_id: current_user.id, user_being_followed_id: @user.id) != [] ? true : false %>
+          <%= link_to "Unfollow", user_following_path(user_id: @user, id: current_user.id), method: :delete %>
+      <% else %>
+          <%= link_to "Follow", user_followings_path(@user), method: :post %>
+      <% end %>
+  <% end %>
+  </div>
+  <hr>
+  <div>
+    <article class="image">
+      <%= image_tag @user.image_url %>
+    </article>
+    <article class="frequency">
+      <h2><%= @user.rant_frequency %> Ranter</h2>
+    </article>
+  </div>
+  <article class="bio">
+  <p><%= @user.bio %></p>
+  </article>
+  <article class="bio">
+    <h3><%= @user.rants.last.title %></h3>
+    <p><%= @user.rants.last.rant %></p>
+    <%= link_to "Favorite", root_path %>
+  </article>
+
+</article>

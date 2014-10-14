@@ -50,7 +50,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @rant = Rant.new()
+    @user = User.find(params[:id])
+  end
+
   def user_params
-    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency)
+    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency, :image_url)
   end
 end

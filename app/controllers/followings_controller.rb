@@ -3,7 +3,7 @@ class FollowingsController < ApplicationController
 
   def index
     @rant = Rant.new
-    @followings = Following.where(user_following_id: 15)
+    @followings = Following.where(user_following_id: current_user.id)
   end
 
   def create
