@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   end
   resource :session, only: [:new, :create, :destroy]
   # resource :following, only: [:new, :create, :destroy]
-  resources :rants
+  resources :rants do
+    resources :favorites, only: [:create, :destroy, :index]
+  end
 
   get "signin" => "sessions#new", as: :signin
   post "signin" => "sessions#create"

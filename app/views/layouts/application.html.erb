@@ -20,7 +20,7 @@
     <% else %>
         <%= link_to "Dashboard", root_path, :class => "loginLink" %>
         <%= link_to "Following", user_followings_path(current_user.id), :class => "loginLink" %>
-        <%= link_to "Favorites", rants_path, :class => "loginLink" %>
+        <%= link_to "Favorites", rant_favorites_path(current_user.id), :class => "loginLink" %>
         <%= link_to "Search", root_path, :class => "loginLink" %>
     <% end %>
   </article>
