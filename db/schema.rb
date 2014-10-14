@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20141014013230) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "bio"
+    t.text     "bio"
     t.string   "rant_frequency"
     t.text     "image_url"
   end

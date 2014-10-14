@@ -1,5 +1,5 @@
 class ChangeBioDataTypeInUsersTable < ActiveRecord::Migration
-  def change
+  def up
     change_column :users, :bio, :text
   end
 end
