@@ -4,6 +4,10 @@ class RantsController < ApplicationController
     # @rant = Rant.new
   end
 
+  def show
+    @rant = Rant.find(params[:id])
+  end
+
   def new
     @rant = Rant.new(current_user)
   end

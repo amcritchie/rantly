@@ -1,8 +1,4 @@
-<h1><%= title %></h1>
-<hr width="90%">
-
 <ul>
-
   <% rant_list.each_with_index do |rant, index| %>
       <li>
         <br>
@@ -15,29 +11,29 @@
               <h3><%= rant.user.first_name.capitalize %></h3>
             </div>
             <div class="image">
-              <%= link_to image_tag(rant.user.image_url), user_path(rant.user) %>
+              <%= link_to image_tag( rant.user.image_url), user_path(rant.user) %>
             </div>
             <div class="name">
-              <% if rant.user_id != current_user.id %>
-                  <% if Following.where(user_following_id: current_user.id, user_being_followed_id: rant.user.id) != [] ? true : false %>
-                      <%= link_to "Unfollow", user_following_path(user_id: rant.user, id: current_user.id), method: :delete %>
+              <% if rant.rant.user_id != current_user.id %>
+                  <% if Following.where(user_following_id: current_user.id, user_being_followed_id: rant.rant.user.id) != [] ? true : false %>
+                      <%= link_to "Unfollow", user_following_path(user_id: rant.rant.user, id: current_user.id), method: :delete %>
                   <% else %>
-                      <%= link_to "Follow", user_followings_path(rant.user), method: :post %>
+                      <%= link_to "Follow", user_followings_path(rant.rant.user), method: :post %>
                   <% end %>
               <% end %>
             </div>
           </article>
           <article class="rantBody">
             <div>
-              <p><%= link_to rant.rant, rant_path(rant), method: :get %></p>
+              <p><%= rant.rant.rant %></p>
             </div>
           </article>
           <article class="bottom">
             <div>
-              <% if rant.user_id == current_user.id %>
+              <% if rant.rant.user_id == current_user.id %>
                   <%= link_to "Delete", rant_path(rant), method: :delete %>
               <% else %>
-                  <% if Favorite.where(user_id: current_user.id, rant_id: rant.id) == [] ? true : false %>
+                  <% if Favorite.where(user_id: current_user.id, rant_id: rant.rant.id) == [] ? true : false %>
                       <%= link_to "Favorite", rant_favorites_path(rant), method: :post %>
                   <% else %>
                       <%= link_to "Unfavorite", rant_favorite_path(rant_id: rant.id, id: current_user.id), method: :delete %>

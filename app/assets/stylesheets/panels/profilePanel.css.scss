@@ -1,0 +1,57 @@
+.profilePanel {
+  width: 400px;
+  height: 670px;
+  display: inline-block;
+  float: left;
+  .profilePicture {
+    margin-top: 50px;
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .profileName {
+    color: lightgrey;
+    text-align: center;
+  }
+  .rantForm {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    color: lightgray;
+    label {
+      text-align: left;
+    }
+    ul {
+      padding-left: 0;
+      list-style-type: none;
+    }
+    li {
+      margin-top: 20px;
+    }
+    input {
+      width: 100%;
+    }
+    .full {
+      input {
+        width: 100%
+      }
+    }
+    .userInfoBio {
+      width: 100%;
+      textarea {
+        height: 250px;
+        width: 98%;
+      }
+    }
+    .submitButton {
+      width: 100%;
+      input {
+        color: whitesmoke;
+        background-color: green;
+        height: 50px;
+      }
+    }
+  }
+}

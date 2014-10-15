@@ -1,0 +1,109 @@
+<% if flash[:success] %>
+    <div class="flashSuccess"><%= flash[:success] %></div>
+<% end %>
+<% if flash[:fail] %>
+    <div class="flashFail"><%= flash[:fail] %></div>
+<% end %>
+
+<article class="profilePanel">
+  <%= link_to image_tag(current_user.image_url, class: "profilePicture"), edit_user_path(current_user) %>
+  <h2 class="profileName">
+    <%= current_user.full_name %>
+  </h2>
+  <hr>
+  <%= form_for @rant, html: {class: 'rantForm'} do |f| %>
+      <ul>
+        <li class="full">
+          <%= f.label :title, "A rant about:" %>
+          <%= f.text_field :title %>
+        </li>
+
+        <li class="userInfoBio">
+          <%= f.label :rant, "Rant:" %>
+          <%= f.text_area :rant %>
+        </li>
+        <li class="submitButton">
+          <%= f.submit "RANT" %>
+        </li>
+      </ul>
+  <% end %>
+</article>
+
+<article class="rantPanel">
+  <article class="bottom">
+    <h1><%= @rant.title %></h1>
+
+    <div>
+      <% if @rant.user_id == current_user.id %>
+          <%= link_to "Delete", rant_path(@rant), method: :delete %>
+      <% else %>
+          <% if Favorite.where(user_id: current_user.id, rant_id: @rant.id) == [] ? true : false %>
+              <%= link_to "Favorite", rant_favorites_path(@rant), method: :post %>
+          <% else %>
+              <%= link_to "Unfavorite", rant_favorite_path(rant_id: @rant.id, id: current_user.id), method: :delete %>
+          <% end %>
+      <% end %>
+    </div>
+  </article>
+  <hr width="90%">
+  <br>
+
+  <div class="rantBody">
+    <article class="image">
+      <%= link_to image_tag(@rant.user.image_url), user_path(@rant.user) %>
+      <% if @rant.user_id != current_user.id %>
+          <% if Following.where(user_following_id: current_user.id, user_being_followed_id: @rant.user.id) != [] ? true : false %>
+              <%= link_to "Unfollow", user_following_path(user_id: @rant.user, id: current_user.id), method: :delete %>
+          <% else %>
+              <%= link_to "Follow", user_followings_path(@rant.user), method: :post %>
+          <% end %>
+      <% end %>
+    </article>
+
+    <article class="body">
+      <h3>by <%= @rant.user.full_name %></h3><br><br>
+      <%= link_to @rant.rant, rant_path(@rant), method: :get %>
+    </article>
+  </div>
+
+  <br><br>
+  <hr width="50%">
+  <div class="comments">
+    <ul>
+      <li>
+        <div>
+          <article class="commenter">
+            <div>
+              <%= link_to image_tag(@rant.user.image_url), user_path(@rant.user) %>
+            </div>
+          </article>
+          <article class="comment">
+            <div>
+              <p>comments on this rant, comments on this rant, comments on this rant, comments on this rant, comments on
+                this
+                rant, </p>
+            </div>
+          </article>
+        </div>
+      </li>
+    </ul>
+    <br>
+    <hr width="50%">
+    <br>
+
+    <div>
+      <%= form_for :comment do |f| %>
+
+          <article class="enterComment">
+            <!--<%= f.label :comment, "Enter your comments here..." %>-->
+            <%= f.text_field :comment, placeholder: "Enter your comments here..." %>
+
+          </article>
+          <article class="submitButton">
+            <%= f.submit "RANT BACK" %>
+          </article>
+      <% end %>
+    </div>
+  </div>
+
+</article>
