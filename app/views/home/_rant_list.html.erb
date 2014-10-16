@@ -29,7 +29,15 @@
           </article>
           <article class="rantBody">
             <div>
-              <p><%= link_to rant.rant, rant_path(rant), method: :get %></p>
+              <p>
+                <% if rant.rant.length > 900 %>
+                    <% distance_to_space = rant.rant[870..920].split("").find_index(".") %>
+                    <% scaled_rant = rant.rant[0..870 + distance_to_space] + ".." %>
+                <% else %>
+                    <% scaled_rant = rant.rant %>
+                <% end %>
+                <%= link_to scaled_rant, rant_path(rant), method: :get %>
+              </p>
             </div>
           </article>
           <article class="bottom">
