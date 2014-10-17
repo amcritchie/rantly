@@ -19,6 +19,7 @@ class FavoritesController < ApplicationController
   def destroy
     favorite = Favorite.where(user_id: current_user.id, rant_id: params[:rant_id])
     favorite.delete_all
+    flash[:fail] = "Rant Removed"
     redirect_to :back
   end
 end

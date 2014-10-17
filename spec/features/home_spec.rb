@@ -201,4 +201,16 @@ describe "My Rants on the dashboard. =>" do
     click_link "Delete"
     expect(page).to_not have_content(filler_text1)
   end
+  it "Rant can be favorited and unfavorited" do
+    create_rant("Title", filler_text1)
+    click_link "Logout"
+    login("Payton", "pass123")
+    click_link "Favorite"
+    save_and_open_page
+    click_link "Favorites"
+    expect(page).to have_content(filler_text1)
+    save_and_open_page
+    click_link "Unfavorite"
+    expect(page).to_not have_content(filler_text1)
+  end
 end
