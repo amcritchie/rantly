@@ -206,10 +206,8 @@ describe "My Rants on the dashboard. =>" do
     click_link "Logout"
     login("Payton", "pass123")
     click_link "Favorite"
-    save_and_open_page
     click_link "Favorites"
     expect(page).to have_content(filler_text1)
-    save_and_open_page
     click_link "Unfavorite"
     expect(page).to_not have_content(filler_text1)
   end

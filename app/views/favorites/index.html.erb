@@ -3,16 +3,5 @@
 <article class="dashboardPanel">
   <h1>Favorites</h1>
   <hr width="90%">
-  <%= @favorites.all.each do |rant| %>
-      <hr>
-      <%= rant.rant.rant %>
-      <%= rant.rant.id %>
-      <hr>
-      user id => <%= rant.rant.user_id %>
-      <br>
-      session id => <%= current_user.id %>
-
-
-  <% end %>
-  <%= render partial: 'rant_list', locals: {title: "My Rants", rant_list: @favorites} %>
+  <%= render partial: 'rant_list', locals: {title: "My Rants", favorites_list: @favorites} %>
 </article>
