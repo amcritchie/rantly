@@ -1,51 +1,66 @@
 <%= form_for @user, url: users_path, html: {class: 'userForm'} do |f| %>
-    <% if @user.errors.any? %>
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-          <% end %>
-        </ul>
-    <% end %>
     <h1 class="userInfoTitle">Register</h1>
-    <ul>
-      <li class="half">
-        <%=  f.label :username %>
-        <%=  f.text_field :username %>
-      </li>
-      <li class="half">
+
+    <div>
+      <% if @user.errors.any? %>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+      <% end %>
+    </div>
+
+    <div>
+      <article class="half">
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </article>
+      <article class="half">
         <%= f.label :password %>
-        <%=  f.password_field :password %>
-      </li>
-      <li class="half">
+        <%= f.password_field :password %>
+      </article>
+    </div>
+
+    <div>
+      <article class="half">
         <%= f.label :first_name %>
-        <%=  f.text_field :first_name %>
-      </li>
-      <li class="half">
+        <%= f.text_field :first_name %>
+      </article>
+      <article class="half">
         <%= f.label :last_name %>
-        <%=  f.text_field :last_name %>
-      </li>
-      <li class="userInfoBio">
+        <%= f.text_field :last_name %>
+      </article>
+    </div>
+
+    <div>
+      <article class="userInfoBio">
         <%= f.label :bio %>
-        <%=  f.text_area :bio %>
+        <%= f.text_area :bio %>
+      </article>
+    </div>
+
+    <div class="userInfoRadio">
+      <p>How often do you rant?</p>
+      <article class="radio">
+        <%= f.radio_button :rant_frequency, 'Monthly' %>
+        <%= f.label :rant_frequency, 'Monthly' %>
+      </article>
+      <article class="radio">
+        <%= f.radio_button :rant_frequency, 'Weekly' %>
+        <%= f.label :rant_frequency, 'Weekly' %>
+      </article>
+      <article class="radio">
+        <%= f.radio_button :rant_frequency, 'Daily' %>
+        <%= f.label :rant_frequency, 'Daily' %>
+      </article>
+    </div>
+
+    <hr>
+
+    <div>
+      <li class="submitButton">
+        <%= f.submit 'Register' %>
       </li>
-      <li class="userInfoRadio">
-        <p>How often do you rant?</p>
-        <article class="radio">
-        <%= f.radio_button :rant_frequency,'Monthly' %>
-        <%= f.label :rant_frequency,'Monthly' %>
-        </article>
-        <article class="radio">
-        <%= f.radio_button :rant_frequency,'Weekly' %>
-        <%= f.label :rant_frequency,'Weekly' %>
-        </article>
-        <article class="radio">
-        <%= f.radio_button :rant_frequency,'Daily' %>
-        <%= f.label :rant_frequency,'Daily' %>
-        </article>
-      </li>
-      <hr>
-      <li class="submitButton" >
-        <%= f.submit 'Register'%>
-      </li>
-    </ul>
+    </div>
 <% end %>

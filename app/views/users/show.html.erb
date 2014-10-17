@@ -53,9 +53,30 @@
   <p><%= @user.bio %></p>
   </article>
   <article class="bio">
-    <h3><%= @user.rants.last.title %></h3>
-    <p><%= @user.rants.last.rant %></p>
-    <%= link_to "Favorite", root_path %>
+
+      <% @user.rants.each_with_index do |rant, index| %>
+            <br>
+            <% if index!=0 %>
+                <hr width="50%">
+            <% end %>
+            <h3><%= rant.title %></h3>
+            <p><%= rant.rant %></p>
+            <% if rant.user_id == current_user.id %>
+                <%= link_to "Delete", rant_path(rant), method: :delete %>
+            <% else %>
+                <% if Favorite.where(user_id: current_user.id, rant_id: rant.id) == [] ? true : false %>
+                    <%= link_to "Favorite", rant_favorites_path(rant), method: :post %>
+                <% else %>
+                    <%= link_to "Unfavorite", rant_favorite_path(rant_id: rant.id, id: current_user.id), method: :delete %>
+                <% end %>
+            <% end %>
+        <% end %>
+
+
+
+
+
+
   </article>
 
 </article>
