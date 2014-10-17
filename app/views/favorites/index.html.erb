@@ -1,37 +1,8 @@
-<% if flash[:success] %>
-    <div class="flashSuccess"><%= flash[:success] %></div>
-<% end %>
-<% if flash[:fail] %>
-    <div class="flashFail"><%= flash[:fail] %></div>
-<% end %>
 
-<article class="profilePanel">
-  <%= link_to image_tag(current_user.image_url, class: "profilePicture"), edit_user_path(current_user) %>
-  <h2 class="profileName">
-    <%= current_user.full_name %>
-  </h2>
-  <hr>
-  <%= form_for @rant, html: {class: 'rantForm'} do |f| %>
-      <ul>
-        <li class="full">
-          <%= f.label :title, "A rant about:" %>
-          <%= f.text_field :title %>
-        </li>
-
-        <li class="userInfoBio">
-          <%= f.label :rant, "Rant:" %>
-          <%= f.text_area :rant %>
-        </li>
-        <li class="submitButton">
-          <%= f.submit "RANT" %>
-        </li>
-      </ul>
-  <% end %>
-</article>
+<%= render 'sessionUserPanel/userPanel' %>
 
 <article class="dashboardPanel">
   <h1>Favorites</h1>
   <hr width="90%">
   <%= render partial: 'rant_list', locals:{title:"My Rants", rant_list:@favorites} %>
-
 </article>

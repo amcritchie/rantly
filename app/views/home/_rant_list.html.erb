@@ -36,7 +36,9 @@
                 <% else %>
                     <% scaled_rant = rant.rant %>
                 <% end %>
+                <article class="body">
                 <%= link_to scaled_rant, rant_path(rant), method: :get %>
+                </article>
               </p>
             </div>
           </article>
