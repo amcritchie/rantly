@@ -1,52 +1,69 @@
 <%= form_for @user, url: user_path(current_user), html: {class: 'userForm'} do |f| %>
-    <% if @user.errors.any? %>
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-          <% end %>
-        </ul>
-    <% end %>
-
     <h1 class="userInfoTitle">Edit</h1>
-    <ul>
-      <li class="full">
-        <%=  f.label :username %>
-        <%=  f.text_field :username %>
-      </li>
-      <li class="full">
+
+    <div class="registerDiv">
+      <% if @user.errors.any? %>
+          <ul>
+            <% @user.errors.each do | attr, message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+      <% end %>
+    </div>
+    <div class="registerDiv">
+      <article class="full">
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </article>
+    </div>
+
+    <div class="registerDiv">
+      <article class="full">
         <%= f.label :image_url %>
-        <%=  f.text_field :image_url %>
-      </li>
-      <li class="half">
+        <%= f.text_field :image_url %>
+      </article>
+    </div>
+
+    <div class="registerDiv">
+      <article class="half">
         <%= f.label :first_name %>
-        <%=  f.text_field :first_name %>
-      </li>
-      <li class="half">
+        <%= f.text_field :first_name %>
+      </article>
+      <article class="half">
         <%= f.label :last_name %>
-        <%=  f.text_field :last_name %>
-      </li>
-      <li class="userInfoBio">
+        <%= f.text_field :last_name %>
+      </article>
+    </div>
+
+    <div class="registerDiv">
+      <article class="userInfoBio">
         <%= f.label :bio %>
-        <%=  f.text_area :bio %>
-      </li>
-      <li class="userInfoRadio">
-        <p>How often do you rant?</p>
-        <article class="radio">
-          <%= f.radio_button :rant_frequency,'Monthly' %>
-          <%= f.label :rant_frequency,'Monthly' %>
-        </article>
-        <article class="radio">
-          <%= f.radio_button :rant_frequency,'Weekly' %>
-          <%= f.label :rant_frequency,'Weekly' %>
-        </article>
-        <article class="radio">
-          <%= f.radio_button :rant_frequency,'Daily' %>
-          <%= f.label :rant_frequency,'Daily' %>
-        </article>
-      </li>
-      <hr>
-      <li class="submitButton" >
-        <%= f.submit 'Edit'%>
-      </li>
-    </ul>
+        <%= f.text_area :bio %>
+      </article>
+    </div>
+
+    <div class="registerDiv userInfoRadio">
+      <p>How often do you rant?</p>
+      <article class="radio">
+        <%= f.radio_button :rant_frequency, 'Monthly' %>
+        <%= f.label :rant_frequency, 'Monthly' %>
+      </article>
+      <article class="radio">
+        <%= f.radio_button :rant_frequency, 'Weekly' %>
+        <%= f.label :rant_frequency, 'Weekly' %>
+      </article>
+      <article class="radio">
+        <%= f.radio_button :rant_frequency, 'Daily' %>
+        <%= f.label :rant_frequency, 'Daily' %>
+      </article>
+    </div>
+
+    <hr>
+
+    <div class="registerDiv">
+      <article class="submitButton">
+        <%= f.submit 'Edit' %>
+      </article>
+    </div>
+    <hr>
 <% end %>
