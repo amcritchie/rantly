@@ -1,7 +1,92 @@
-
 <%= render 'sessionUserPanel/userPanel' %>
 
 <article class="dashboardPanel">
-  <%= render partial: 'rant_list', locals:{title:"My Rants", rant_list:@my_rants} %>
-  <%= render partial: 'rant_list', locals:{title:"Last Rants", rant_list:@latest_rants} %>
+  <% if current_user.admin == true %>
+      <div class="adminDashboard">
+
+        <div>
+          <h2> Holá</h2>
+        </div>
+
+        <div>
+          <article class="chart">
+            <div><h1>Rants per day</h1></div>
+            <div class="graph">
+              <article class="leftBar">
+              </article>
+              <article class="rightBar">
+              </article>
+            </div>
+          </article>
+
+          <article class="chart">
+            <div><h1>Signups per day</h1></div>
+            <div class="graph">
+              <article class="leftBar">
+              </article>
+              <article class="rightBar">
+              </article>
+            </div>
+          </article>
+
+          <article class="chart">
+            <div><h1>Logins per day</h1></div>
+            <div class="graph">
+              <article class="leftBar">
+              </article>
+              <article class="rightBar">
+              </article>
+            </div>
+          </article>
+
+        </div>
+      </div>
+      <div class="adminRantList">
+
+        <div>
+          <h2>Rants</h2>
+        </div>
+        <div>
+          <p>options</p>
+        </div>
+        <div>
+          <div class="row">
+            <article class="name">
+              Name
+            </article>
+            <article class="email">
+              Email
+            </article>
+            <article class="title">
+              Title
+            </article>
+            <article class="action">
+              Action
+            </article>
+          </div>
+        </div>
+        <div>
+          <% @latest_rants.each do |rant| %>
+              <div class="row">
+                <article class="name">
+                  <%= rant.user.full_name %>
+                </article>
+                <article class="email">
+                  <%= rant.user.username %>
+                </article>
+                <article class="title">
+                  <%= rant.title %>
+                </article>
+                <article class="action">
+                  <%= link_to "View", root_path %>
+                </article>
+              </div>
+          <% end %>
+        </div>
+      </div>
+  <% else %>
+      <%= render partial: 'rant_list', locals: {title: "My Rants", rant_list: @my_rants} %>
+      <%= render partial: 'rant_list', locals: {title: "Last Rants", rant_list: @latest_rants} %>
+  <% end %>
+
 </article>

@@ -118,3 +118,64 @@ h1, h3 {
   a:active {color: black;} /* selected link */
 }
 
+.adminDashboard{
+  box-sizing: border-box;
+  padding: 0 3% 0 3%;
+  .chart{
+    display: inline-block;
+    width: 33%;
+    background-color: blue;
+    .graph{
+      border-left: 2px solid black;
+      border-bottom: 2px solid black;
+      height: 250px;
+      width: 100%;
+      position: relative;
+      .leftBar{
+        width: 30px;
+        height: 150px;
+        position:absolute; bottom:0;
+        margin-left: 50px;
+        background-color: green;
+      }
+      .rightBar{
+        width: 30px;
+        height: 150px;
+        position:absolute; bottom:0;
+        margin-left: 82px;
+        background-color: red;
+      }
+    }
+  }
+}
+
+.adminRantList{
+  box-sizing: border-box;
+  padding: 0 3% 0 3%;
+  article{
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: yellowgreen;
+    float: left;
+    border: solid black 2px;
+    padding-left: 7px;
+    height: 25px;
+//    text-align: center;
+  }
+  .row{
+    width: 100%;
+  }
+  .name{
+    width: 20%;
+  }
+  .email{
+    width: 30%;
+  }
+  .title{
+    width: 30%;
+  }
+  .action{
+    width: 20%;
+  }
+}
+

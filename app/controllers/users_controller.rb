@@ -12,14 +12,15 @@ class UsersController < ApplicationController
     end
     @user = User.new(
         user_params,
-        image_url: "http://www.egotailor.com/product/10472/images/10472design-1.jpg"
     )
 
     @user.username.downcase!
-    # @user.password_digest.downcase!
     @user.first_name.downcase!
     @user.last_name.downcase!
     @user.bio.downcase!
+    @user.image_url = "http://www.egotailor.com/product/10472/images/10472design-1.jpg"
+    @user.admin = false
+
     if @user.save
       flash[:success] = "Thank you for registering!"
       redirect_to root_path
