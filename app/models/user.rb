@@ -9,14 +9,14 @@ class User < ActiveRecord::Base
            foreign_key: :user_following_id,
            class_name: "Following"
 
-  validates :username, presence: true
-  validates :username, uniqueness: true
-  validates :password_digest, presence: true
-  validates :password_digest, length: {minimum: 8}
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :bio, presence: true
-  validates :rant_frequency, presence: true
+  validates :username, presence: {message: "Username can't be blank"}
+  validates :username, uniqueness: {message: "Username has already been taken"}
+  validates :password_digest, presence: {message: "Password can't be Blank"}
+  validates :password_digest, length: {minimum: 8, message: "Password must be at least eight characters"}
+  validates :first_name, presence: {message: "Please enter first name"}
+  validates :last_name, presence: {message: "Please enter last name"}
+  validates :bio, presence: {message: "Please describe yourself"}
+  validates :rant_frequency, presence: {message: "How often do you rant"}
 
   def full_name
     first_name.capitalize + " " + last_name.capitalize

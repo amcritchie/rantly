@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       @user = User.new()
+      flash[:fail] = "Username/Password is incorrect"
       render :new
     end
   end

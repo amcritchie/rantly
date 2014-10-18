@@ -9,6 +9,8 @@
 @import "panels/userPanel.css.scss";
 @import "panels/dashboardPanel.css.scss";
 @import "panels/rantPanel.css.scss";
+@import "forms/registerForm.css.scss";
+
 
 body {
   background-color: #666;
@@ -16,7 +18,6 @@ body {
 
 nav {
   width: 100%;
-  //  display: inline-block;
 }
 
 .navBar {
@@ -65,104 +66,6 @@ nav {
   }
 }
 
-.userForm {
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: whitesmoke;
-  width: 480px;
-  padding-bottom: 5%;
-  ul {
-    padding-left: 0;
-  }
-  div{
-    box-sizing: border-box;
-    float: left;
-    width: 100%;
-    padding: 0 5% 0 5%;
-    article {
-      display: inline-block;
-    }
-    .half {
-      width: 47%;
-
-    }
-    .half:nth-child(even) {
-      margin-left: 4%;
-    }
-    .userInfoBio{
-      width: 100%;
-      textarea {
-        height: 150px;
-        width: 98%;
-      }
-    }
-    .userInfoRadio {
-      width: 100%;
-      .radio {
-//        width: 30%;
-//        position: relative;
-        display: inline-block;
-//        float: left;
-        margin-right: 40px;
-//        width: 31%;
-        input {
-          width: 20px;
-        }
-        label {
-          display: inline-block;
-        }
-      }
-    }
-    input{
-      width: 100%;
-    }
-
-  }
-  .userInfoTitle {
-    display: block;
-    margin-left: 3%;
-    margin-bottom: 3%;
-    padding-top: 3%;
-  }
-  label {
-    display: block;
-    color: black;
-  }
-  li {
-    display: inline-block;
-    float: left;
-    padding: 3%;
-    padding-top: 0;
-  }
-
-  .submitButton {
-    position: relative;
-    display: inline-block;
-    width: 94%;
-    input {
-      color: whitesmoke;
-      background-color: green;
-      height: 50px;
-    }
-  }
-//  .userInfoRadio {
-//    width: 100%;
-//    .radio {
-//      position: relative;
-//      display: inline-block;
-//      float: left;
-//      margin-left: 8%;
-//      width: 21%;
-//      input {
-//        width: 20px;
-//      }
-//      label {
-//        display: inline-block;
-//      }
-//    }
-//  }
-}
 
 .homePageHead {
   background-color: whitesmoke;
@@ -214,3 +117,4 @@ h1, h3 {
   a:visited { color: black; } /* visited link */
   a:active {color: black;} /* selected link */
 }
+

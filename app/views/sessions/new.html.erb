@@ -1,3 +1,7 @@
+<% if flash[:fail] %>
+    <div class="flashFail"><%= flash[:fail] %></div>
+<% end %>
+
 <%= form_for @user, url: signin_path, html: {class: 'userForm'} do |f| %>
     <% if @user.errors.any? %>
         <ul>
@@ -8,18 +12,23 @@
     <% end %>
 
     <h1 class="userInfoTitle">Login</h1>
-    <ul>
-      <li class="full">
+    <div class="registerDiv">
+      <article class="full">
         <%=  f.label :username %>
         <%=  f.text_field :username %>
-      </li>
-      <li class="full">
+      </article>
+    </div>
+    <div class="registerDiv">
+      <article class="full">
         <%=  f.label :password %>
         <%=  f.password_field :password %>
-      </li>
+      </article>
+    </div>
       <hr>
-      <li class="submitButton" >
+    <div class="registerDiv">
+      <article class="submitButton" >
         <%= f.submit 'LOGIN'%>
-      </li>
-    </ul>
+      </article>
+    </div>
+    <hr>
 <% end %>

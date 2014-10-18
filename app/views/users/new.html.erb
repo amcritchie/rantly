@@ -1,17 +1,18 @@
 <%= form_for @user, url: users_path, html: {class: 'userForm'} do |f| %>
     <h1 class="userInfoTitle">Register</h1>
 
-    <div>
+    <div class="registerDiv">
       <% if @user.errors.any? %>
+          <% @user.errors.messages.delete(:password) %>
           <ul>
-            <% @user.errors.full_messages.each do |message| %>
+            <% @user.errors.each do | attr, message| %>
                 <li><%= message %></li>
             <% end %>
           </ul>
       <% end %>
     </div>
 
-    <div>
+    <div class="registerDiv">
       <article class="half">
         <%= f.label :username %>
         <%= f.text_field :username %>
@@ -22,7 +23,7 @@
       </article>
     </div>
 
-    <div>
+    <div class="registerDiv">
       <article class="half">
         <%= f.label :first_name %>
         <%= f.text_field :first_name %>
@@ -33,14 +34,14 @@
       </article>
     </div>
 
-    <div>
+    <div class="registerDiv">
       <article class="userInfoBio">
         <%= f.label :bio %>
         <%= f.text_area :bio %>
       </article>
     </div>
 
-    <div class="userInfoRadio">
+    <div class="registerDiv userInfoRadio">
       <p>How often do you rant?</p>
       <article class="radio">
         <%= f.radio_button :rant_frequency, 'Monthly' %>
@@ -58,9 +59,10 @@
 
     <hr>
 
-    <div>
-      <li class="submitButton">
+    <div class="registerDiv">
+      <article class="submitButton">
         <%= f.submit 'Register' %>
-      </li>
+      </article>
     </div>
+    <hr>
 <% end %>
