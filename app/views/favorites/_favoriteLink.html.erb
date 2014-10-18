@@ -1,0 +1,9 @@
+<% if rant.user_id == current_user.id %>
+    <%= link_to "Delete", rant_path(rant), method: :delete %>
+<% else %>
+    <% if Favorite.where(user_id: current_user.id, rant_id: rant.id) == [] ? true : false %>
+        <%= link_to "#{Favorite.where(rant_id: rant.id).length}-Favorite", rant_favorites_path(rant), method: :post %>
+    <% else %>
+        <%= link_to "#{Favorite.where(rant_id: rant.id).length}-Unfavorite", rant_favorite_path(rant_id: rant.id, id: current_user.id), method: :delete %>
+    <% end %>
+<% end %>

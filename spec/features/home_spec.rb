@@ -205,10 +205,11 @@ describe "My Rants on the dashboard. =>" do
     create_rant("Title", filler_text1)
     click_link "Logout"
     login("Payton", "pass123")
-    click_link "Favorite"
+    save_and_open_page
+    click_link "0-Favorite"
     click_link "Favorites"
     expect(page).to have_content(filler_text1)
-    click_link "Unfavorite"
+    click_link "1-Unfavorite"
     expect(page).to_not have_content(filler_text1)
   end
 end

@@ -1,43 +1,31 @@
 <ul>
-      <li>
-        <br>
+  <li>
+    <br>
 
-        <div class="rant">
-          <article class="ranter">
-            <div class="name">
-              <h3><%= favorite.rant.user.first_name.capitalize %></h3>
-            </div>
-            <div class="image">
-              <%= link_to image_tag( favorite.rant.user.image_url), user_path(favorite.rant.user) %>
-            </div>
-            <div class="name">
-              <% if favorite.rant.user_id != current_user.id %>
-                  <% if Following.where(user_following_id: current_user.id, user_being_followed_id: favorite.rant.user.id) != [] ? true : false %>
-                      <%= link_to "Unfollow", user_following_path(user_id: favorite.rant.user, id: current_user.id), method: :delete %>
-                  <% else %>
-                      <%= link_to "Follow", user_followings_path(favorite.rant.user), method: :post %>
-                  <% end %>
-              <% end %>
-            </div>
-          </article>
-          <article class="rantBody">
-            <div>
-              <p><%= favorite.rant.rant %></p>
-            </div>
-          </article>
-          <article class="bottom">
-            <div>
-              <% if favorite.rant.user_id == current_user.id %>
-                  <%= link_to "Delete", rant_path(favorite), method: :delete %>
-              <% else %>
-                  <% if Favorite.where(user_id: current_user.id, rant_id: favorite.id) != [] ? true : false %>
-                      <%= link_to "Favorite", rant_favorites_path(favorite), method: :post %>
-                  <% else %>
-                      <%= link_to "Unfavorite", rant_favorite_path(rant_id: favorite.rant.id, id: current_user.id), method: :delete %>
-                  <% end %>
-              <% end %>
-            </div>
-          </article>
+    <div class="rant">
+      <article class="ranter">
+        <div class="name">
+          <h3><%= favorite.rant.user.first_name.capitalize %></h3>
         </div>
-      </li>
+        <div class="image">
+          <%= link_to image_tag(favorite.rant.user.image_url), user_path(favorite.rant.user) %>
+        </div>
+        <div class="name">
+          <%= render partial: 'followings/followLink', locals:{ rant: favorite.rant} %>
+        </div>
+      </article>
+      <article class="rantBody">
+        <div>
+          <p><%= favorite.rant.rant %></p>
+        </div>
+      </article>
+
+      <article class="bottom">
+        <div>
+          <%= link_to "#{Favorite.where(rant_id: favorite.rant.id).length}-Unfavorite", rant_favorite_path(rant_id: favorite.rant.id, id: current_user.id), method: :delete %>
+        </div>
+      </article>
+
+    </div>
+  </li>
 </ul>

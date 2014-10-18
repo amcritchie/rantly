@@ -12,6 +12,16 @@
   </h2>
   <hr>
   <%= form_for @rant, html: {class: 'rantForm'} do |f| %>
+
+      <div>
+      <% if @rant.errors.any? %>
+          <ul>
+            <% @rant.errors.each do | attr, message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+      <% end %>
+      </div>
       <ul>
         <li class="full">
           <%= f.label :title, "A rant about:" %>

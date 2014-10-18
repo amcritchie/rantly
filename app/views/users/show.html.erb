@@ -1,44 +1,10 @@
-<% if flash[:success] %>
-    <div class="flashSuccess"><%= flash[:success] %></div>
-<% end %>
-<% if flash[:fail] %>
-    <div class="flashFail"><%= flash[:fail] %></div>
-<% end %>
-
-<article class="profilePanel">
-  <%= link_to image_tag(current_user.image_url, class: "profilePicture"), edit_user_path(current_user) %>
-  <h2 class="profileName">
-    <%= current_user.full_name %>
-  </h2>
-  <hr>
-  <%= form_for @rant, html: {class: 'rantForm'} do |f| %>
-      <ul>
-        <li class="full">
-          <%= f.label :title, "A rant about:" %>
-          <%= f.text_field :title %>
-        </li>
-
-        <li class="userInfoBio">
-          <%= f.label :rant, "Rant:" %>
-          <%= f.text_area :rant %>
-        </li>
-        <li class="submitButton">
-          <%= f.submit "RANT" %>
-        </li>
-      </ul>
-  <% end %>
-</article>
+<%= render 'sessionUserPanel/userPanel' %>
 
 <article class="userPanel">
   <div>
-  <h1><%= @user.full_name %></h1>
-  <% if @user.id != current_user.id %>
-      <% if Following.where(user_following_id: current_user.id, user_being_followed_id: @user.id) != [] ? true : false %>
-          <%= link_to "Unfollow", user_following_path(user_id: @user, id: current_user.id), method: :delete %>
-      <% else %>
-          <%= link_to "Follow", user_followings_path(@user), method: :post %>
-      <% end %>
-  <% end %>
+    <h1><%= @user.full_name %></h1>
+    <%= render partial: 'followings/followLink', locals:{ rant: @user.rants.first} %>
+
   </div>
   <hr>
   <div>
@@ -50,31 +16,21 @@
     </article>
   </div>
   <article class="bio">
-  <p><%= @user.bio %></p>
+    <p><%= @user.bio %></p>
   </article>
   <article class="bio">
 
-      <% @user.rants.each_with_index do |rant, index| %>
-            <br>
-            <% if index!=0 %>
-                <hr width="50%">
-            <% end %>
-            <h3><%= rant.title %></h3>
-            <p><%= rant.rant %></p>
-            <% if rant.user_id == current_user.id %>
-                <%= link_to "Delete", rant_path(rant), method: :delete %>
-            <% else %>
-                <% if Favorite.where(user_id: current_user.id, rant_id: rant.id) == [] ? true : false %>
-                    <%= link_to "Favorite", rant_favorites_path(rant), method: :post %>
-                <% else %>
-                    <%= link_to "Unfavorite", rant_favorite_path(rant_id: rant.id, id: current_user.id), method: :delete %>
-                <% end %>
-            <% end %>
-        <% end %>
+    <% rants_sorted_by_favorites = @user.rants.all.sort_by { |x| x.favorites.length }.reverse %>
 
+    <% rants_sorted_by_favorites.each_with_index do |rant, index| %>
 
+        <br> <% if index!=0 %> <hr width="50%"> <% end %>
 
+        <h3><%= rant.title %></h3>
+        <p><%= rant.rant %></p>
+        <%= render partial: 'favorites/favoriteLink', locals:{title:"My Rants", favorite: rant, rant: rant} %>
 
+    <% end %>
 
 
   </article>

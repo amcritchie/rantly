@@ -20,10 +20,11 @@ class RantsController < ApplicationController
     )
     if @rant.save
       flash[:success] = "Rant Created"
+      redirect_to root_path
     else
       flash[:fail] = "Rant must be at least 140 characters"
+      redirect_to :back
     end
-    redirect_to root_path
   end
 
   def destroy
