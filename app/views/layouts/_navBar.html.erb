@@ -1,0 +1,38 @@
+<div class="navBar">
+  <article class="title">
+    <article class="middle">
+
+      <%= link_to "Rant.ly", root_path, :class => "loginLink" %>
+
+    </article>
+  </article>
+
+  <article class="userOptions">
+    <article class="middle options">
+      <% if session[:user_id] != nil %>
+          <% if current_user.admin %>
+              <%= link_to "Dashboard", root_path, :class => "loginLink" %>
+              <%= link_to "Rants", user_followings_path(current_user.id), :class => "loginLink" %>
+              <%= link_to "Users", rant_favorites_path(current_user.id), :class => "loginLink" %>
+          <% else %>
+              <%= link_to "Dashboard", root_path, :class => "loginLink" %>
+              <%= link_to "Following", user_followings_path(current_user.id), :class => "loginLink" %>
+              <%= link_to "Favorites", rant_favorites_path(current_user.id), :class => "loginLink" %>
+              <%= link_to "Search", root_path, :class => "loginLink" %>
+          <% end %>
+      <% end %>
+    </article>
+  </article>
+
+  <article class="loginLogout">
+    <article class="middle login">
+      <% if session[:user_id] == nil %>
+          <%= link_to "Login", new_session_path, :class => "loginLink" %>
+          <%= link_to "JOIN", new_user_path, :class => "joinButton" %>
+      <% else %>
+          <%= link_to "Logout", signout_path, method: :delete, :class => 'joinButton' %>
+      <% end %>
+    </article>
+  </article>
+
+</div>
