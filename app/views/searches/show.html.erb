@@ -1,8 +1,21 @@
-<h1><%= title %></h1>
-<hr width="90%">
-<ul>
+<%= render 'sessionUserPanel/userPanel' %>
 
-  <% rant_list.each_with_index do |rant, index| %>
+<article class="searchPanel">
+  <h1>Search</h1>
+  <hr>
+
+  <%= form_tag search_path, method: :get, html: {class: 'seachBar'} do %>
+
+      <%= label_tag :search_for %>
+      <%= text_field_tag :search_for, params[:search_for] %>
+
+      <%= submit_tag "Search", class: "btn btn-large btn-primary submit" %>
+
+  <% end %>
+
+  <ul>
+  <% @search.each_with_index do |rant, index| %>
+
       <li>
         <br>
         <% if index!=0 %>
@@ -32,7 +45,7 @@
                     <% scaled_rant = rant.rant %>
                 <% end %>
                 <article class="body">
-                <%= link_to scaled_rant, rant_path(rant), method: :get %>
+                  <%= link_to scaled_rant, rant_path(rant), method: :get %>
                 </article>
               </p>
             </div>
@@ -47,4 +60,6 @@
         </div>
       </li>
   <% end %>
-</ul>
+  </ul>
+
+</article>

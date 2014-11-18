@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = "Thank you for registering!"
+      session[:user_id] = @user.id
       redirect_to root_path
     else
       render :new
@@ -45,7 +46,6 @@ class UsersController < ApplicationController
           image_url: params[:user][:image_url]
       )
       redirect_to root_path
-      # , notice: "Information updated successfully"
     else
       redirect_to :back
     end

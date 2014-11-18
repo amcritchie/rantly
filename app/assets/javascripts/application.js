@@ -21,5 +21,4 @@ $(document).ready(function(){
         $(".flashFail").fadeOut('slow');
         $(".flashSuccess").fadeOut('slow');
     }, 1000)
-
 });

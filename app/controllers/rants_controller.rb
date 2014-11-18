@@ -22,7 +22,13 @@ class RantsController < ApplicationController
       flash[:success] = "Rant Created"
       redirect_to root_path
     else
-      flash[:fail] = "Rant must be at least 140 characters"
+
+      errors = []
+           @rant.errors.full_messages.each do |message|
+                errors.push(message)
+            end
+
+      flash[:fail] = @rant.errors.full_messages.join(', & ')
       redirect_to :back
     end
   end

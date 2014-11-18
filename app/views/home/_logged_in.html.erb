@@ -5,10 +5,6 @@
       <div class="adminDashboard">
 
         <div>
-          <h2> Holá</h2>
-        </div>
-
-        <div>
           <article class="chart">
             <div><h1>Rants per day</h1></div>
             <div class="graph">
@@ -85,8 +81,9 @@
         </div>
       </div>
   <% else %>
+      <%= render partial: 'rant_list', locals: {title: "Mentions", rant_list: @mentions} %>
       <%= render partial: 'rant_list', locals: {title: "My Rants", rant_list: @my_rants} %>
       <%= render partial: 'rant_list', locals: {title: "Last Rants", rant_list: @latest_rants} %>
   <% end %>
 
-</article>
+</article>x

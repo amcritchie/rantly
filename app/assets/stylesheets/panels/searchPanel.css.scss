@@ -1,0 +1,77 @@
+.searchPanel {
+  width: 1120px;
+  display: inline-block;
+  background-color: whitesmoke;
+  margin-left: 2.2%;
+
+  form {
+    text-align: center;
+    .submit{
+      background-color: green;
+    }
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 15px;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  .rant {
+    width: 100%;
+    height: 250px;
+    .ranter {
+      width: 13.5%;
+      height: 86.5%;
+      display: inline-block;
+      text-align: center;
+      margin:0 20px 0 40px;
+      div {
+        float: left;
+        width: 100%;
+      }
+      .image {
+        height: 70%;
+        margin: -10px 0 20px 0;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .name {
+        margin-top: -15px;
+      }
+    }
+    .rantBody {
+      width: 76%;
+      height: 80%;
+      display: inline-block;
+      position: relative;
+      div {
+        float: left;
+        width: 100%;
+        text-align: left;
+        font-size: 18px;
+        p {
+          position: relative;
+          margin: 0 0 0 0;
+
+        }
+
+      }
+    }
+    .bottom {
+      width: 100%;
+      height: 12%;
+      font-size: 20px;
+      div {
+        float: right;
+        a {
+          margin-right: 55px;
+        }
+      }
+    }
+  }
+}
