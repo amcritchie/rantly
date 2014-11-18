@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
            foreign_key: :user_following_id,
            class_name: "Following"
 
+  mount_uploader :image, AvatarUploader
+
+
   validates :username, presence: {message: "Username can't be blank"}
   validates :username, uniqueness: {message: "Username has already been taken"}
   validates :password_digest, presence: {message: "Password can't be Blank"}

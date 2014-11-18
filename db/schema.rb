@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018175150) do
+ActiveRecord::Schema.define(version: 20141118204238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20141018175150) do
     t.string   "rant_frequency"
     t.text     "image_url"
     t.boolean  "admin"
+    t.string   "image"
   end
 
 end

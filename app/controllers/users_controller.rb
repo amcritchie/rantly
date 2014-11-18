@@ -7,9 +7,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user_params.map do |param|
-      param[1].downcase
-    end
+
     @user = User.new(
         user_params,
     )
@@ -19,6 +17,7 @@ class UsersController < ApplicationController
     @user.last_name.downcase!
     @user.bio.downcase!
     @user.image_url = "http://www.egotailor.com/product/10472/images/10472design-1.jpg"
+
     @user.admin = false
 
     if @user.save
@@ -57,6 +56,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency, :image_url)
+    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency, :image_url, :image)
   end
 end
