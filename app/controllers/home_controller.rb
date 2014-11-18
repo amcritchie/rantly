@@ -3,7 +3,6 @@ class HomeController < ApplicationController
     @rant = Rant.new
     # @test = User.find(session[:user_id]).username
     if current_user != nil
-
       @mentions = Rant.where('rant LIKE :rant',{:rant => "%@#{current_user.username}%"})
     end
     @my_rants = Rant.where(user_id: current_user).reverse.first(3)
