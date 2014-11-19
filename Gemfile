@@ -18,6 +18,12 @@ gem 'normalize-rails'
 gem 'launchy'
 gem 'carrierwave'
 
+# MarkDown
+gem 'redcarpet'
+gem 'albino'
+gem 'nokogiri'
+
+
 gem 'pry-byebug'
 gem 'pry-rails'
 

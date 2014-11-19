@@ -18,7 +18,7 @@
             </div>
             <div class="name">
 
-              <%= render partial: 'followings/followLink', locals:{ rant: rant} %>
+              <%= render partial: 'followings/followLink', locals: {rant: rant} %>
 
             </div>
           </article>
@@ -32,7 +32,7 @@
                     <% scaled_rant = rant.rant %>
                 <% end %>
                 <article class="body">
-                <%= link_to scaled_rant, rant_path(rant), method: :get %>
+                  <%= link_to markdown(scaled_rant).html_safe, rant_path(rant), method: :get %>
                 </article>
               </p>
             </div>
@@ -40,7 +40,7 @@
 
           <article class="bottom">
             <div>
-              <%= render partial: 'favorites/favoriteLink', locals:{title:"My Rants", favorite: rant, rant: rant} %>
+              <%= render partial: 'favorites/favoriteLink', locals: {title: "My Rants", favorite: rant, rant: rant} %>
             </div>
           </article>
 

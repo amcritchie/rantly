@@ -42,7 +42,7 @@ class UsersController < ApplicationController
           last_name: params[:user][:last_name],
           bio: params[:user][:bio],
           rant_frequency: params[:user][:rant_frequency],
-          image_url: params[:user][:image_url]
+          image: params[:user][:image]
       )
       redirect_to root_path
     else

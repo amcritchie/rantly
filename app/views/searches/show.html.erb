@@ -13,53 +13,54 @@
 
   <% end %>
 
-  <ul>
-  <% @search.each_with_index do |rant, index| %>
+      <ul>
+        <% @search.each_with_index do |rant, index| %>
 
-      <li>
-        <br>
-        <% if index!=0 %>
-            <hr width="50%">
-        <% end %>
-        <div class="rant">
-          <article class="ranter">
-            <div class="name">
-              <h3><%= link_to rant.user.first_name.capitalize, user_path(rant.user) %></h3>
-            </div>
-            <div class="image">
-              <%= link_to image_tag(rant.user.image_url), user_path(rant.user) %>
-            </div>
-            <div class="name">
+            <li>
+              <br>
+              <% if index!=0 %>
+                  <hr width="50%">
+              <% end %>
+              <div class="rant">
+                <article class="ranter">
+                  <div class="name">
+                    <h3><%= link_to rant.user.first_name.capitalize, user_path(rant.user) %></h3>
+                  </div>
+                  <div class="image">
+                    <%= link_to image_tag(rant.user.image_url), user_path(rant.user) %>
+                  </div>
+                  <div class="name">
 
-              <%= render partial: 'followings/followLink', locals:{ rant: rant} %>
+                    <%= render partial: 'followings/followLink', locals: {rant: rant} %>
 
-            </div>
-          </article>
-          <article class="rantBody">
-            <div>
-              <p>
-                <% if rant.rant.length > 900 %>
-                    <% distance_to_space = rant.rant[870..920].split("").find_index(".") %>
-                    <% scaled_rant = rant.rant[0..870 + distance_to_space] + ".." %>
-                <% else %>
-                    <% scaled_rant = rant.rant %>
-                <% end %>
-                <article class="body">
-                  <%= link_to scaled_rant, rant_path(rant), method: :get %>
+                  </div>
                 </article>
-              </p>
-            </div>
-          </article>
+                <article class="rantBody">
+                  <div>
+                    <p>
+                      <% if rant.rant.length > 900 %>
+                          <% distance_to_space = rant.rant[870..920].split("").find_index(".") %>
+                          <% scaled_rant = rant.rant[0..870 + distance_to_space] + ".." %>
+                      <% else %>
+                          <% scaled_rant = rant.rant %>
+                      <% end %>
+                      <article class="body">
+                        <%= link_to scaled_rant, rant_path(rant), method: :get %>
+                      </article>
+                    </p>
+                  </div>
+                </article>
 
-          <article class="bottom">
-            <div>
-              <%= render partial: 'favorites/favoriteLink', locals:{title:"My Rants", favorite: rant, rant: rant} %>
-            </div>
-          </article>
+                <article class="bottom">
+                  <div>
+                    <%= render partial: 'favorites/favoriteLink', locals: {title: "My Rants", favorite: rant, rant: rant} %>
+                  </div>
+                </article>
 
-        </div>
-      </li>
-  <% end %>
-  </ul>
+              </div>
+            </li>
+        <% end %>
+      </ul>
+
 
 </article>

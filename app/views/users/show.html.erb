@@ -27,7 +27,7 @@
         <br> <% if index!=0 %> <hr width="50%"> <% end %>
 
         <h3><%= rant.title %></h3>
-        <p><%= rant.rant %></p>
+        <p><%= markdown(rant.rant).html_safe %></p>
         <%= render partial: 'favorites/favoriteLink', locals:{title:"My Rants", favorite: rant, rant: rant} %>
 
     <% end %>

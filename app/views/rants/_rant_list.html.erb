@@ -25,7 +25,7 @@
           </article>
           <article class="rantBody">
             <div>
-              <p><%= rant.rant.rant %></p>
+              <p><%= markdown(rant.rant.rant).html_safe %></p>
             </div>
           </article>
           <article class="bottom">

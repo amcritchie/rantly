@@ -22,7 +22,7 @@
 
     <article class="body">
       <h3>by <%= link_to @rant.user.full_name, user_path(@rant.user)%></h3><br><br>
-      <%= link_to @rant.rant, rant_path(@rant), method: :get %>
+      <%= link_to markdown(@rant.rant).html_safe, rant_path(@rant), method: :get %>
     </article>
   </div>
 
@@ -52,12 +52,11 @@
     <br>
 
     <div>
-      <%= form_for :comment do |f| %>
+      <%= form_for [@comment.rant, @comment] do |f| %>
 
           <article class="enterComment">
             <!--<%= f.label :comment, "Enter your comments here..." %>-->
             <%= f.text_field :comment, placeholder: "Enter your comments here..." %>
-
           </article>
           <article class="submitButton">
             <%= f.submit "RANT BACK" %>

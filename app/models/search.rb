@@ -24,4 +24,14 @@ class Search
                             {:username => "%#{search_term}%"})
   end
 
+  def find_rants_by_text(search_term)
+    Rant.where('LOWER(rant) LIKE :rant',
+                            {:rant => "%#{search_term}%"})
+  end
+
+  def find_rants_by_title(search_term)
+    Rant.where('LOWER(title) LIKE :title',
+               {:title => "%#{search_term}%"})
+  end
+
 end

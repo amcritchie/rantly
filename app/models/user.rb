@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, AvatarUploader
 
+  has_many :rant_comments
+
 
   validates :username, presence: {message: "Username can't be blank"}
   validates :username, uniqueness: {message: "Username has already been taken"}

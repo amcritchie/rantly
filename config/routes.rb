@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # resource :following, only: [:new, :create, :destroy]
   resources :rants do
     resources :favorites, only: [:create, :destroy, :index]
-
+    resources :rant_comments, only: [:new, :create, :destroy]
   end
 
   get "signin" => "sessions#new", as: :signin
