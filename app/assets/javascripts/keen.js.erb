@@ -46,20 +46,25 @@ $(document).ready(function(){
             interval: "daily"
         });
 
+        var dailySignups = new Keen.Query("count", {
+            eventCollection: "signups",
+            timeframe: "this_week",
+            interval: "daily"
+        });
+        client.draw(dailySignups, document.getElementById("signupsPerDay"), {
+            // Custom configuration here
+            chartType: "columnchart",
+            title: "Signups/Day",
+            colors: ["#666"],
+            width: "auto"
+        });
+
         client.draw(dailyLogin, document.getElementById("loginsPerDay"), {
             chartType: "columnchart",
             title: "Logins/Day",
             colors: ["#666"],
             width: "auto"
         });
-
-        var totalLogins = new Keen.Query("count", {
-            eventCollection: "login"
-        });
-        client.draw(totalLogins, document.getElementById("signupsPerDay"), {
-            // Custom configuration here
-        });
-
 
     });
 
