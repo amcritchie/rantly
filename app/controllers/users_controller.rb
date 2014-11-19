@@ -15,12 +15,20 @@ class UsersController < ApplicationController
     @user.username.downcase!
     @user.first_name.downcase!
     @user.last_name.downcase!
+    @user.email.downcase!
     @user.bio.downcase!
+    @user.email_confirmed = false
     @user.image_url = "http://www.egotailor.com/product/10472/images/10472design-1.jpg"
 
     @user.admin = false
 
     if @user.save
+
+      uuid = SecureRandom.uuid
+      confirmation_info = MailConfirmer.create(email: @user.email,uuid: uuid)
+
+      UserMailer.send_welcome(@user, email_confirmer_url(uuid)).deliver
+
       flash[:success] = "Thank you for registering!"
       session[:user_id] = @user.id
       Keen.publish(:signups, {:username => current_user.username}) if Rails.env.production?
@@ -57,6 +65,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :rant_frequency, :image_url, :image)
+    params.require(:user).permit(:username, :password, :email, :first_name, :last_name, :bio, :rant_frequency, :image_url, :image)
   end
 end

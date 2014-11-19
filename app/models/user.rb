@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   validates :password_digest, length: {minimum: 8, message: "Password must be at least eight characters"}
   validates :first_name, presence: {message: "Please enter first name"}
   validates :last_name, presence: {message: "Please enter last name"}
+  validates :email, presence: {message: "Please enter your email"}
   validates :bio, presence: {message: "Please describe yourself"}
   validates :rant_frequency, presence: {message: "How often do you rant"}
 

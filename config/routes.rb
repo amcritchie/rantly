@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   post "signin" => "sessions#create"
   delete "signout" => "sessions#destroy", as: :signout
 
+  get "confirm_email/:confirmation_token" => 'mail_confirmer#confirm_and_destroy', as: 'email_confirmer'
+
 end

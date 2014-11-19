@@ -31,7 +31,6 @@ $(document).ready(function(){
 
         debugger;
         $.post('/users/' + $(this).attr('data-userid') + '/followings.json').success()
-
     });
 
 
