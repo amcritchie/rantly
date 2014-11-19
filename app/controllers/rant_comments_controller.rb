@@ -6,6 +6,12 @@ class RantCommentsController < ApplicationController
 
   def create
 
+    @comment = RantComment.create(
+        user_id: current_user.id,
+        rant_id: params[:rant_id],
+        comment: params[:rant_comment][:comment]
+    )
+
     redirect_to :back
   end
 
