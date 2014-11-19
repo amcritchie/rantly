@@ -27,6 +27,19 @@ $(document).ready(function(){
             width: "auto"
         });
 
+        var dailyRants = new Keen.Query("count", {
+            eventCollection: "rant",
+            timeframe: "this_week",
+            interval: "daily"
+        });
+        client.draw(dailyRants, document.getElementById("rantsPerDay"), {
+            // Custom configuration here
+            chartType: "columnchart",
+            title: "Rants/Day",
+            colors: ["#666"],
+            width: "auto"
+        });
+
         var dailyLogin = new Keen.Query("count", {
             eventCollection: "login",
             timeframe: "this_week",

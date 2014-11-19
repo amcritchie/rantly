@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Thank you for registering!"
       session[:user_id] = @user.id
+      Keen.publish(:signups, {:username => current_user.username}) if Rails.env.production?
       redirect_to root_path
     else
       render :new
