@@ -7,8 +7,6 @@ $(document).ready(function(){
     Keen.ready(function(){
         var query = new Keen.Query("sum", {
             eventCollection: "login",
-            targetProperty: "username",
-//            eventCollection: "logins",
             timeframe: "today",
             interval: "hourly"
         });
