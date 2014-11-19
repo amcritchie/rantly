@@ -4,19 +4,50 @@ $(document).ready(function(){
         projectId: "<%= ENV['KEEN_PROJECT_ID']%>",
         readKey: "<%= ENV['KEEN_READ_KEY'] %>"
     });
+
     Keen.ready(function(){
-        var query = new Keen.Query("sum", {
+
+        var totalLogins = new Keen.Query("count", {
+            eventCollection: "login"
+        });
+        client.draw(totalLogins, document.getElementById("totalLogins"), {
+            // Custom configuration here
+        });
+
+        var hourlyLogin = new Keen.Query("count", {
             eventCollection: "login",
             timeframe: "today",
             interval: "hourly"
         });
-        client.draw(query, document.getElementById("keenTest"), {
-            // Custom configuration here
+
+        client.draw(hourlyLogin, document.getElementById("loginsPerHour"), {
+            chartType: "columnchart",
+            title: "Logins/Hour",
+            colors: ["#666"],
+            width: "auto"
+        });
+
+        var dailyLogin = new Keen.Query("count", {
+            eventCollection: "login",
+            timeframe: "this_week",
+            interval: "daily"
+        });
+
+        client.draw(dailyLogin, document.getElementById("loginsPerDay"), {
             chartType: "columnchart",
             title: "Logins/Day",
             colors: ["#666"],
             width: "auto"
         });
+
+        var totalLogins = new Keen.Query("count", {
+            eventCollection: "login"
+        });
+        client.draw(totalLogins, document.getElementById("signupsPerDay"), {
+            // Custom configuration here
+        });
+
+
     });
 
 });
