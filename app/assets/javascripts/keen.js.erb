@@ -1,0 +1,24 @@
+$(document).ready(function(){
+
+    var client = new Keen({
+        projectId: "<%= ENV['KEEN_PROJECT_ID']%>",
+        readKey: "<%= ENV['KEEN_READ_KEY'] %>"
+    });
+    Keen.ready(function(){
+        var query = new Keen.Query("sum", {
+            eventCollection: "login",
+            targetProperty: "username"
+//            eventCollection: "logins",
+            timeframe: "today",
+            interval: "hourly"
+        });
+        client.draw(query, document.getElementById("keenTest"), {
+            // Custom configuration here
+            chartType: "columnchart",
+            title: "Logins/Day",
+            colors: ["#666"],
+            width: "auto"
+        });
+    });
+
+});

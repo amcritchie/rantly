@@ -11,6 +11,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       flash[:success] = "Welcome back #{current_user.first_name.capitalize}"
       Keen.publish(:login, {:username => params[:user][:username]}) if Rails.env.production?
+      Keen.publish(:loginDev, {:username => params[:user][:username]}) if Rails.env.development?
+
       redirect_to root_path
     else
       @user = User.new()
