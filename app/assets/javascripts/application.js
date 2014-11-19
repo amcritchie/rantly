@@ -20,5 +20,18 @@ $(document).ready(function(){
     setTimeout(function(){
         $(".flashFail").fadeOut('slow');
         $(".flashSuccess").fadeOut('slow');
-    }, 1000)
+    }, 1000);
+
+    $('.followButton').on('click', function(e){
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        var followButton = $(this);
+
+        debugger;
+        $.post('/users/' + $(this).attr('data-userid') + '/followings.json').success()
+
+    });
+
 });

@@ -10,12 +10,14 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:user][:password].downcase)
       session[:user_id] = @user.id
       flash[:success] = "Welcome back #{current_user.first_name.capitalize}"
+      Keen.publish(:login, {:username => params[:user][:username]}) if Rails.env.production?
       redirect_to root_path
     else
       @user = User.new()
       flash[:fail] = "Username/Password is incorrect"
       render :new
     end
+
   end
 
   def destroy

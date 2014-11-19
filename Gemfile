@@ -17,6 +17,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'normalize-rails'
 gem 'launchy'
 gem 'carrierwave'
+gem 'keen'
+gem 'figaro'
 
 # MarkDown
 gem 'redcarpet'

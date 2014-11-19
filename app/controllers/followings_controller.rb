@@ -7,14 +7,17 @@ class FollowingsController < ApplicationController
   end
 
   def create
-    @following = Following.new(
-        user_following_id: current_user.id,
-        user_being_followed_id: params[:user_id]
-    )
-    if @following.save
-      flash[:success] = "User Followed"
-    end
-    redirect_to root_path
+    # @following = Following.new(
+    #     user_following_id: current_user.id,
+    #     user_being_followed_id: params[:user_id]
+    # )
+    # if @following.save
+    #   flash[:success] = "User Followed"
+    # end
+    # redirect_to root_path
+
+    current_user.follow(user)
+    render json: User.find(params[:user_id])
   end
 
   def destroy
