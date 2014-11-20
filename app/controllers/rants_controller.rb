@@ -2,7 +2,7 @@ class RantsController < ApplicationController
 
   def index
     # @rant = Rant.new
-    @latest_rants = Rant.where.not(user_id: current_user, spam: false).reverse
+    @latest_rants = Rant.where.not(user_id: current_user, spam: true).reverse
     @spam = Rant.where(spam: true)
 
   end
