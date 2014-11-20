@@ -50,4 +50,33 @@ $(document).ready(function () {
     });
 
 
+    $('.favoriteButton').on('click', function (e) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        var favoriteButton = $(this);
+        var favCount = favoriteButton.attr('data-favcount');
+
+        debugger;
+        if (favCount == '0') {
+
+            $.post('/rants/' + $(this).attr('data-rantid') + '/favorites.json', {rant_id: $(this).attr('data-rantid')}).success();
+
+            $('.favoriteButton[data-rantid=' + $(this).attr('data-rantid') + ']').empty().text((parseInt(favCount) + 1) + '-Unfavorite').attr('data-favcount', favoriteButton.attr('data-favcount') + 1);
+
+        } else {
+
+            $.ajax({
+                type: 'delete',
+                url: ('/rants/' + $(this).attr('data-rantid') + '/favorites/' + $(this).attr('data-rantid')),
+                dataType: 'json'
+            });
+
+            $('.favoriteButton[data-rantid=' + $(this).attr('data-rantid') + ']').empty().text('Favorite').attr('data-favcount', 'true');
+        }
+
+    });
+
+
 });

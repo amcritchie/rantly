@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
 
+  respond_to(:json)
+
   def index
     @rant = Rant.new
     @favorites = Favorite.where(user_id: current_user.id)

@@ -11,7 +11,7 @@
           <%= link_to image_tag(favorite.rant.user.image_url), user_path(favorite.rant.user) %>
         </div>
         <div class="name">
-          <%= render partial: 'followings/followLink', locals:{ rant: favorite.rant} %>
+          <%= render partial: 'followings/followLink', locals:{ rant: favorite.rant, following_id: favorite.rant.id} %>
         </div>
       </article>
       <article class="rantBody">
@@ -22,7 +22,7 @@
 
       <article class="bottom">
         <div>
-          <%= link_to "#{Favorite.where(rant_id: favorite.rant.id).length}-Unfavorite", rant_favorite_path(rant_id: favorite.rant.id, id: current_user.id), method: :delete %>
+          <%= render partial: 'favorites/favoriteLink', locals:{title:"My Rants", favorite: favorite.rant, rant: favorite.rant, rantID: favorite.rant.id, userID: favorite.rant.user.id} %>
         </div>
       </article>
 

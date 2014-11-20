@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       UserMailer.send_welcome(@user, email_confirmer_url(uuid)).deliver
 
       flash[:success] = "Thank you for registering!"
-      session[:user_id] = @user.id
+
       Keen.publish(:signups, {:username => current_user.username}) if Rails.env.production?
       redirect_to root_path
     else

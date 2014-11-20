@@ -3,7 +3,7 @@
 <article class="userPanel">
   <div>
     <h1><%= @user.full_name %></h1>
-    <%= render partial: 'followings/followLink', locals:{ rant: @user.rants.first} %>
+    <%= render partial: 'followings/followLink', locals:{ following_id: @user.id} %>
 
   </div>
   <hr>
@@ -28,7 +28,7 @@
 
         <h3><%= rant.title %></h3>
         <p><%= markdown(rant.rant).html_safe %></p>
-        <%= render partial: 'favorites/favoriteLink', locals:{title:"My Rants", favorite: rant, rant: rant} %>
+        <%= render partial: 'favorites/favoriteLink', locals:{title:"My Rants", favorite: rant, rant: rant, rantID: rant.id, userID: rant.user.id} %>
 
     <% end %>
 

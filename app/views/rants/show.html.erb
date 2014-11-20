@@ -5,7 +5,7 @@
     <h1><%= @rant.title %></h1>
 
     <div>
-      <%= render partial: 'favorites/favoriteLink', locals: {title: "My Rants", favorite: @rant, rant: @rant} %>
+      <%= render partial: 'favorites/favoriteLink', locals: {title: "My Rants", favorite: @rant, rant: @rant, rantID: @rant.id, userID: @rant.user.id} %>
 
     </div>
   </article>
