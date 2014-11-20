@@ -15,7 +15,7 @@
   <div class="rant">
     <article class="image">
       <%= link_to image_tag(@rant.user.image_url), user_path(@rant.user) %>
-      <%= render partial: 'followings/followLink', locals: {rant: @rant} %>
+      <%= render partial: 'followings/followLink', locals: {following_id: @rant.user_id} %>
 
     </article>
 

@@ -10,7 +10,8 @@
           <h4><%= User.find(following.user_being_followed_id).full_name %></h4>
           <%= image_tag User.find(following.user_being_followed_id).image_url %>
 
-          <p><%= link_to "Unfollow", user_following_path(user_id: User.find(following.user_being_followed_id).id, id: current_user.id), method: :delete %></p>
+          <p><%= render partial: 'followings/followLink', locals: {following_id: following.user_being_followed_id} %></p>
+
         </div>
       </article>
   <% end %>

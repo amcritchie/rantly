@@ -15,24 +15,39 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){
+$(document).ready(function () {
 
-    setTimeout(function(){
+    setTimeout(function () {
         $(".flashFail").fadeOut('slow');
         $(".flashSuccess").fadeOut('slow');
     }, 1000);
 
-    $('.followButton').on('click', function(e){
+    $('.followButton').on('click', function (e) {
 
         e.preventDefault();
         e.stopPropagation();
 
         var followButton = $(this);
 
-        debugger;
-        $.post('/users/' + $(this).attr('data-userid') + '/followings.json').success()
-    });
+        if (followButton.attr('data-following') == 'true') {
 
+            $.post('/users/0/followings.json', {id: $(this).attr('data-userid')}).success();
+
+            $('.followButton[data-userid=' + $(this).attr('data-userid') + ']').empty().text('Unfollow').attr('data-following', 'false');
+
+        } else {
+
+            $.ajax({
+                type: 'delete',
+                url: ('/users/0/followings/' + $(this).attr('data-userid')),
+                dataType: 'json'
+            });
+
+            $('.followButton[data-userid=' + $(this).attr('data-userid') + ']').empty().text('Follow').attr('data-following', 'true');
+
+        }
+
+    });
 
 
 });

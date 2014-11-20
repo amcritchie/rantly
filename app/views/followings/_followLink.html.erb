@@ -1,8 +1,7 @@
-<% if rant.user_id != current_user.id %>
-    <% if Following.where(user_following_id: current_user.id, user_being_followed_id: rant.user.id) != [] ? true : false %>
-        <%= link_to "Unfollow", user_following_path(user_id: rant.user, id: current_user.id), method: :delete %>
+<% if following_id != current_user.id %>
+    <% if Following.where(user_following_id: current_user.id, user_being_followed_id: following_id) != [] ? true : false %>
+        <%= button_tag "Unfollow", class: 'followButton', data: {userID: following_id, following: false} %>
     <% else %>
-        <%= link_to "Follow", user_followings_path(rant.user), method: :post %>
-        <%= button_tag "Follouu", class: 'followButton', data: {userID: rant.user.id} %>
+        <%= button_tag "Follow", class: 'followButton', data: {userID: following_id, following: true} %>
     <% end %>
 <% end %>
