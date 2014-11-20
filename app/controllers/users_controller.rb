@@ -2,6 +2,10 @@ class UsersController < ApplicationController
 
   skip_before_filter :ensure_authenticated_user
 
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -26,11 +30,8 @@ class UsersController < ApplicationController
 
       uuid = SecureRandom.uuid
       confirmation_info = MailConfirmer.create(email: @user.email,uuid: uuid)
-
       UserMailer.send_welcome(@user, email_confirmer_url(uuid)).deliver
-
       flash[:success] = "Thank you for registering!"
-
       Keen.publish(:signups, {:username => current_user.username}) if Rails.env.production?
       redirect_to root_path
     else

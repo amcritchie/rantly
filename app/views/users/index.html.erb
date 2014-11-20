@@ -1,0 +1,53 @@
+<div class="adminRantList">
+
+
+  <div>
+    <h2>Users</h2>
+  </div>
+  <div>
+    <p>options</p>
+  </div>
+  <div>
+    <div class="row">
+      <article class="name">
+        Name
+      </article>
+      <article class="email">
+        Email
+      </article>
+      <article class="rantCount">
+        Number of Rants
+      </article>
+      <article class="disabled">
+        disabled
+      </article>
+      <article class="action">
+        Action
+      </article>
+    </div>
+  </div>
+  <div>
+    <% @users.each do |user| %>
+        <div class="row">
+          <article class="name">
+            <%= user.full_name %>
+          </article>
+          <article class="email">
+            <%= user.email %>
+          </article>
+          <article class="rantCount">
+            <%= Rant.where(user_id: user.id).length %>
+          </article>
+          <article class="disabled">
+            <%= 'ok' %>
+
+          </article>
+          <article class="action">
+            <%= link_to "Disable", root_path %>
+            <%= link_to "Impersonate", session_path(user.id), method: :post %>
+
+          </article>
+        </div>
+    <% end %>
+  </div>
+</div>

@@ -89,7 +89,6 @@ Rails.application.configure do
       :authentication => :plain,
       :enable_starttls_auto => true
   }
-  config.action_mailer.default_url_options = { :host => 'rantly-mcritchie.herokuapp.com' }
-
+  config.action_mailer.default_url_options = {:host => 'rantly-mcritchie.herokuapp.com' }
 
 end
