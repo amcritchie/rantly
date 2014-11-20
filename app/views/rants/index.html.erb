@@ -69,20 +69,20 @@ Rants
     <% @spam.each do |spam| %>
         <div class="row">
           <article class="name">
-            <%= Rant.find(spam.rant_id).user.full_name %>
+            <%= spam.user.full_name %>
           </article>
           <article class="email">
-            <%= Rant.find(spam.rant_id).user.email %>
+            <%= spam.user.email %>
 
           </article>
           <article class="title">
-            <%= Rant.find(spam.rant_id).title %>
+            <%= spam.title %>
 
           </article>
           <article class="action">
             <%= link_to "View", root_path %>
-            <%= link_to "Resolve", resolve_admin_path(spam.rant_id) %>
-            <%= link_to "Delete", delete_admin_path(spam.rant_id) %>
+            <%= link_to "Resolve", resolve_admin_path(spam.id) %>
+            <%= link_to "Delete", delete_admin_path(spam.id) %>
           </article>
         </div>
     <% end %>

@@ -2,8 +2,8 @@ class RantsController < ApplicationController
 
   def index
     # @rant = Rant.new
-    @latest_rants = Rant.where.not(user_id: current_user).reverse
-    @spam = Spam.all
+    @latest_rants = Rant.where.not(user_id: current_user, spam: false).reverse
+    @spam = Rant.where(spam: true)
 
   end
 
@@ -26,7 +26,6 @@ class RantsController < ApplicationController
     if @rant.save
       # flash[:success] = "Rant Created"
 
-      binding.pry
       Following.where(user_being_followed_id: current_user).each do |following|
         UserMailer.notify_of_rant(User.find(following.user_following_id), current_user, @rant).deliver
       end
@@ -52,7 +51,6 @@ class RantsController < ApplicationController
   end
 
   def spam
-    binding.pry
     Rant.find(params[:rant_id]).update_attributes(spam: true)
     redirect_to :back
   end
