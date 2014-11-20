@@ -79,4 +79,33 @@ $(document).ready(function () {
     });
 
 
+    $('.createRant').on('click', function (e) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        var rantButton = $(this);
+        var title = document.getElementById('rant_title').value;
+        var rant = document.getElementById('rant_rant').value;
+
+        if ((title.length < 50) && (title.length > 0)) {
+            if(rant.length > 140){
+                $.post('/rants.json', {title: title, rant: rant});
+                createFlash('Success','Rant Created');
+                document.getElementById('rant_title').value = '';
+                document.getElementById('rant_rant').value = '';
+            } else {
+                createFlash('Fail','Rant must be at least 140 charaters')
+            }
+        } else {
+            createFlash('Fail','Title must be less then 50 characters')
+        }
+    });
 });
+
+function createFlash(type,message){
+    $('main').prepend('<div class="flash'+type+'">'+message+'</div>');
+    setTimeout(function(){
+        $('.flash'+type).remove()
+    },2000)
+}

@@ -17,8 +17,8 @@ class RantsController < ApplicationController
   def create
     @rant = Rant.new(
         user_id: current_user.id,
-        title: params[:rant][:title],
-        rant: params[:rant][:rant]
+        title: params[:title],
+        rant: params[:rant]
     )
     if @rant.save
       flash[:success] = "Rant Created"
