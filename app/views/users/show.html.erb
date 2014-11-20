@@ -36,3 +36,17 @@
   </article>
 
 </article>
+
+<div>
+
+  <%= form_for :comment do |f| %>
+
+      <article class="enterComment">
+        <!--<%= f.label :comment, "Enter your comments here..." %>-->
+        <%= f.text_field :comment, placeholder: "Enter your comments here..." %>
+      </article>
+      <article class="submitButton">
+        <%= f.submit "RANT BACK" %>
+      </article>
+  <% end %>
+</div>

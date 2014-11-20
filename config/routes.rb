@@ -2,8 +2,15 @@ Rails.application.routes.draw do
   root :to => "home#index"
 
   get "/" => "home#index"
+
+  resource :admin, only: [:show] do
+    get 'delete' => 'admins#delete'
+    get 'resolve' => 'admins#resolve'
+  end
+
   resources :users do
     # resources :following, only: [:create, :destroy, :index]
+    resources :user_comments, only: [:new, :create, :destroy]
     resources :followings, only: [:create, :destroy, :index]
   end
   resource :session, only: [:new, :create, :destroy]

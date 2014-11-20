@@ -2,6 +2,10 @@ class RantsController < ApplicationController
 
   def index
     # @rant = Rant.new
+    @latest_rants = Rant.where.not(user_id: current_user).reverse
+
+    @spam = Spam.all
+
   end
 
   def show
@@ -23,6 +27,10 @@ class RantsController < ApplicationController
     if @rant.save
       # flash[:success] = "Rant Created"
 
+      binding.pry
+      Following.where(user_being_followed_id: current_user).each do |following|
+        UserMailer.notify_of_rant(User.find(following.user_following_id), current_user, @rant).deliver
+      end
 
       Keen.publish(:rant, {:username => current_user.username}) if Rails.env.production?
       redirect_to root_path

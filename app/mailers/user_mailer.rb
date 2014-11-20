@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @ranter = ranter
     @rant = rant
-    mail(to: @user.email, subject: "Your friend  just ranted")
+    mail(to: @user.email, subject: "Your friend just ranted")
   end
 
 end

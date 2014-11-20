@@ -1,1 +1,92 @@
 Rants
+
+<div class="adminRantList">
+
+  <div>
+    <h2>Rants</h2>
+  </div>
+  <div>
+    <p>options</p>
+  </div>
+  <div>
+    <div class="row">
+      <article class="name">
+        Name
+      </article>
+      <article class="email">
+        Email
+      </article>
+      <article class="title">
+        Title
+      </article>
+      <article class="action">
+        Action
+      </article>
+    </div>
+  </div>
+  <div>
+    <% @latest_rants.each do |rant| %>
+        <div class="row">
+          <article class="name">
+            <%= rant.user.full_name %>
+          </article>
+          <article class="email">
+            <%= rant.user.username %>
+          </article>
+          <article class="title">
+            <%= rant.title %>
+          </article>
+          <article class="action">
+            <%= link_to "View", root_path %>
+          </article>
+        </div>
+    <% end %>
+  </div>
+
+  <div>
+    <h2>Spams</h2>
+  </div>
+  <div>
+    <p>options</p>
+  </div>
+  <div>
+    <div class="row">
+      <article class="name">
+        Name
+      </article>
+      <article class="email">
+        Email
+      </article>
+      <article class="title">
+        Title
+      </article>
+      <article class="action">
+        Action
+      </article>
+    </div>
+  </div>
+  <div>
+    <% @spam.each do |spam| %>
+        <div class="row">
+          <article class="name">
+            <%= Rant.find(spam.rant_id).user.full_name %>
+          </article>
+          <article class="email">
+            <%= Rant.find(spam.rant_id).user.email %>
+
+          </article>
+          <article class="title">
+            <%= Rant.find(spam.rant_id).title %>
+
+          </article>
+          <article class="action">
+            <%= link_to "View", root_path %>
+            <%= link_to "Resolve", resolve_admin_path(spam.rant_id) %>
+            <%= link_to "Delete", delete_admin_path(spam.rant_id) %>
+          </article>
+        </div>
+    <% end %>
+  </div>
+
+
+</div>

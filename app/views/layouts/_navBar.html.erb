@@ -12,7 +12,7 @@
       <% if session[:user_id] != nil %>
           <% if current_user.admin %>
               <%= link_to "Dashboard", root_path, :class => "loginLink" %>
-              <%= link_to "Rants", user_followings_path(current_user.id), :class => "loginLink" %>
+              <%= link_to "Rants", rants_path, :class => "loginLink" %>
               <%= link_to "Users", rant_favorites_path(current_user.id), :class => "loginLink" %>
           <% else %>
               <%= link_to "Dashboard", root_path, :class => "loginLink" %>
