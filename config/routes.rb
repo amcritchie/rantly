@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :rants do
     resources :favorites, only: [:create, :destroy, :index]
     resources :rant_comments, only: [:new, :create, :destroy]
+    resources :spams, only: [:create, :destroy, :index]
   end
 
   get "signin" => "sessions#new", as: :signin

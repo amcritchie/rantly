@@ -21,7 +21,9 @@ class RantsController < ApplicationController
         rant: params[:rant]
     )
     if @rant.save
-      flash[:success] = "Rant Created"
+      # flash[:success] = "Rant Created"
+
+
       Keen.publish(:rant, {:username => current_user.username}) if Rails.env.production?
       redirect_to root_path
     else
