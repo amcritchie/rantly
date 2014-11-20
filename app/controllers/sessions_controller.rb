@@ -7,22 +7,30 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(username: params[:user][:username].downcase)
-    if @user && @user.authenticate(params[:user][:password].downcase)
-      if @user.email_confirmed?
-        session[:user_id] = @user.id
-        flash[:success] = "Welcome back #{current_user.first_name.capitalize}"
-        Keen.publish(:login, {:username => params[:user][:username]}) if Rails.env.production?
-        # Keen.publish(:login, {:username => params[:user][:username]}) if Rails.env.development?
+    if @user.disabled == false
+      if @user && @user.authenticate(params[:user][:password].downcase)
+        if @user.email_confirmed?
 
-        redirect_to root_path
+          session[:user_id] = @user.id
+          flash[:success] = "Welcome back #{current_user.first_name.capitalize}"
+          Keen.publish(:login, {:username => params[:user][:username]}) if Rails.env.production?
+          # Keen.publish(:login, {:username => params[:user][:username]}) if Rails.env.development?
+
+          redirect_to root_path
+        else
+          @user = User.new()
+          flash[:fail] = "Please Confirm your email"
+          render :new
+        end
       else
         @user = User.new()
-        flash[:fail] = "Please Confirm your email"
+        flash[:fail] = "Username/Password is incorrect"
         render :new
       end
+
     else
       @user = User.new()
-      flash[:fail] = "Username/Password is incorrect"
+      flash[:fail] = "You have been disabled SON!"
       render :new
     end
 

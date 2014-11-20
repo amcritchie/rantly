@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @user.last_name.downcase!
     @user.email.downcase!
     @user.bio.downcase!
+    @user.disabled = false
     @user.email_confirmed = false
     @user.image_url = "http://www.egotailor.com/product/10472/images/10472design-1.jpg"
 
@@ -65,7 +66,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def disable
+    User.find(params[:user_id]).update_attributes(disabled: true)
+    redirect_to :back
+  end
+  def undisable
+    User.find(params[:user_id]).update_attributes(disabled: false)
+    redirect_to :back
+  end
+
   def user_params
-    params.require(:user).permit(:username, :password, :email, :first_name, :last_name, :bio, :rant_frequency, :image_url, :image)
+    params.require(:user).permit(:username, :password, :email, :first_name, :last_name, :bio, :rant_frequency, :image_url, :image, :email_confirmed, :disabled)
   end
 end

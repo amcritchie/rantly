@@ -39,11 +39,14 @@
             <%= Rant.where(user_id: user.id).length %>
           </article>
           <article class="disabled">
-            <%= 'ok' %>
-
+            <%= user.disabled %>
           </article>
           <article class="action">
-            <%= link_to "Disable", root_path %>
+            <% if user.disabled == false %>
+                <%= link_to "Disable", user_disable_path(user.id) %>
+            <% else %>
+                <%= link_to "Undisable", user_undisable_path(user.id) %>
+            <% end %>
             <%= link_to "Impersonate", session_path(user.id), method: :post %>
 
           </article>

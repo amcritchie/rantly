@@ -25,7 +25,8 @@
 
       <div class="rant_username_buttons">
         <%= link_to "Tweet", "https://twitter.com/share?text=#{@rant.title.gsub(/\s/,'%20')}", :target => "_blank", class: "tweet_button" %>
-        <%= button_to "Spam", rant_spams_path(@rant), class: "spam_button" %>
+
+        <%= button_to "Spam", rant_spam_path(@rant), method: :get, class: "spam_button" %>
       </div>
 
 

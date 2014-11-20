@@ -3,7 +3,6 @@ class RantsController < ApplicationController
   def index
     # @rant = Rant.new
     @latest_rants = Rant.where.not(user_id: current_user).reverse
-
     @spam = Spam.all
 
   end
@@ -50,5 +49,17 @@ class RantsController < ApplicationController
     rant.destroy
     flash[:success] = "Rant deleted"
     redirect_to root_path
+  end
+
+  def spam
+    binding.pry
+    Rant.find(params[:rant_id]).update_attributes(spam: true)
+    redirect_to :back
+  end
+
+  def unspam
+    Rant.find(params[:rant_id]).update_attributes(spam: false)
+
+    redirect_to :back
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120085039) do
+ActiveRecord::Schema.define(version: 20141120201352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20141120085039) do
     t.text     "rant"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "spam"
   end
 
   create_table "spams", force: true do |t|
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(version: 20141120085039) do
     t.boolean  "admin"
     t.string   "image"
     t.boolean  "email_confirmed"
+    t.boolean  "disabled"
   end
 
 end

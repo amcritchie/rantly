@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     # resources :following, only: [:create, :destroy, :index]
     resources :user_comments, only: [:new, :create, :destroy]
     resources :followings, only: [:create, :destroy, :index]
+    get '/disable' => 'users#disable'
+    get '/undisable' => 'users#undisable'
+
   end
   resource :session, only: [:new, :create, :destroy]
   resource :search, only: [:show]
@@ -19,7 +22,10 @@ Rails.application.routes.draw do
   resources :rants do
     resources :favorites, only: [:create, :destroy, :index]
     resources :rant_comments, only: [:new, :create, :destroy]
-    resources :spams, only: [:create, :destroy, :index]
+    # resources :spams, only: [:create, :destroy, :index]
+
+    get '/spam' => 'rants#spam'
+    get '/unspam' => 'rants#unspam'
   end
 
   get "signin" => "sessions#new", as: :signin
