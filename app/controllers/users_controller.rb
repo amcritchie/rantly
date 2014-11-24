@@ -29,10 +29,10 @@ class UsersController < ApplicationController
 
     if @user.save
 
-      uuid = SecureRandom.uuid
-      confirmation_info = MailConfirmer.create(email: @user.email,uuid: uuid)
-      UserMailer.send_welcome(@user, email_confirmer_url(uuid)).deliver
-      flash[:success] = "Thank you for registering!"
+      # uuid = SecureRandom.uuid
+      # confirmation_info = MailConfirmer.create(email: @user.email,uuid: uuid)
+      # UserMailer.send_welcome(@user, email_confirmer_url(uuid)).deliver
+      # flash[:success] = "Thank you for registering!"
       Keen.publish(:signups, {:username => current_user.username}) if Rails.env.production?
       redirect_to root_path
     else
