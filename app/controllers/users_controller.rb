@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user.email.downcase!
     @user.bio.downcase!
     @user.disabled = false
-    @user.email_confirmed = false
+    @user.email_confirmed = true
     @user.image_url = "http://www.egotailor.com/product/10472/images/10472design-1.jpg"
 
     @user.admin = false
